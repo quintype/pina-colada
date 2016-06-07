@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/ping', function () {
     return 'pong';
 });
+
+Route::resource('articles', 'ArticlesController');
