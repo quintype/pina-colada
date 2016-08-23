@@ -1,45 +1,22 @@
-var gulp = require("gulp");
-var elixir = require('laravel-elixir');
-var shell = require("gulp-shell")
-var del = require("del");
+var gulp = require('gulp');
+var util = require('gulp-quintype')
+var del = require('del');
 
 var destination = "public/pina-colada/assets";
-var tempPath = "tmp/asset";
 
-elixir.config.publicPath = destination;
+function compileAll() {
+  return util.manifestAndWrite(destination, util.merge(
+    util.sass("./resources/assets/sass/application.scss"),
+    util.browserify("./resources/assets/js/application.js", "application.js"),
+    util.files("./resources/assets/images/**/*")
+  ));
+};
 
-gulp.task("delete-public", function() {
-  return del([destination]);
+gulp.task("clean", function() { return del([destination]); });
+gulp.task("compile", compileAll);
+gulp.task("clean-compile", ["clean"], compileAll);
+gulp.task("default", ["clean-compile"]);
+
+gulp.task('watch', ['clean-compile'], function() {
+  gulp.watch("./resources/assets/**/*", ['compile']);
 });
-
-elixir(function(mix) {
-    mix.task("delete-public");
-});
-
-elixir(function(mix) {
-    mix.sass('application.scss', tempPath + "/application.css");
-});
-
-elixir(function(mix) {
-    mix.browserify("application.js", tempPath + "/application.js");
-});
-
-elixir(function(mix) {
-    mix.copy("resources/assets/images", tempPath);
-});
-
-elixir(function(mix) {
-    mix.copy(tempPath, destination);
-});
-
-elixir(function(mix) {
-    mix.version([
-      "application.js",
-      "application.css",
-      "**/*.gif",
-      "**/*.jpg",
-      "**/*.png",
-      "**/*.svg"
-    ], destination);
-});
-
