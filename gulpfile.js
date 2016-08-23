@@ -14,32 +14,48 @@ var del = require('del');
 
 var destination = "public/pina-colada/assets";
 
-function compileAll() {
+function outputLog(message) {
+  return function() {
+    util.log(message)
+  };
+}
+
+function compileSass(file) {
   var production = !!util.env.production;
-  var css = gulp.src("./resources/assets/sass/application.scss")
-                .pipe(production ? util.noop() : sourcemaps.init())
-                .pipe(sass({
-                  outputStyle: production ? 'compressed' : 'nested'
-                 }).on("error", sass.logError))
-                .pipe(production ? util.noop() : sourcemaps.write());
+  return gulp.src(file)
+    .pipe(production ? util.noop() : sourcemaps.init())
+    .pipe(sass({
+      outputStyle: production ? 'compressed' : 'nested'
+    }).on("error", sass.logError))
+    .pipe(production ? util.noop() : sourcemaps.write())
+    .on("end", outputLog("SASSified:        " + file));
+}
 
-  var images = gulp.src("./resources/assets/images/**/*");
+function compileJS(file, name) {
+  var production = !!util.env.production;
 
-  var js = browserify({
-      entries: "./resources/assets/js/application.js"
-    }).bundle()
-    .pipe(source("application.js"))
+  return browserify({
+    entries: file
+  }).bundle()
+    .pipe(source(name))
     .pipe(buffer())
     .pipe(production ? util.noop() : sourcemaps.init())
     .pipe(production ? uglify() : util.noop())
-    .pipe(production ? util.noop() : sourcemaps.write());
+    .pipe(production ? util.noop() : sourcemaps.write())
+    .on("end", outputLog("Browserified:     " + file));
+}
 
-  return merge(css, js, images)
-           .pipe(rev())
-           .pipe(revReplace())
-           .pipe(gulp.dest(destination))
-           .pipe(rev.manifest())
-           .pipe(gulp.dest(destination));
+function compileAll() {
+  return merge(
+    compileSass("./resources/assets/sass/application.scss"),
+    compileJS("./resources/assets/js/application.js", "application.js"),
+    gulp.src("./resources/assets/images/**/*")
+  ).pipe(rev())
+    .pipe(revReplace())
+    .pipe(gulp.dest(destination))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest(destination))
+    .on("end", outputLog("Manifestified:    " + destination + "/rev-manifest.json"));
 };
 
 gulp.task("clean", function() {
