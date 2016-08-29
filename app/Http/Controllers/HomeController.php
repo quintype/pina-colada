@@ -34,6 +34,8 @@ class HomeController extends QuintypeController
         return view('home', $this->toView([
         	"stories" => $bulk->getResponse("top_stories"),
         	"page" => $page,
-            "meta" => $this->meta]));
+            "meta" => $this->meta
+            ])
+        );
     }
 }
