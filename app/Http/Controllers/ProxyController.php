@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\Http\Controllers\QuintypeController;
+use Illuminate\Routing\Controller as BaseController;
 
-class ProxyController extends QuintypeController
+class ProxyController extends BaseController
 {
     public function __construct()
     {
@@ -20,7 +19,6 @@ class ProxyController extends QuintypeController
     public function proxyGet(Request $request)
     {
         $client = new \GuzzleHttp\Client();
-        $client->request("GET", "http://sketches.quintype.com/qlitics.js");
         $res = $client->request('GET', $this->getRoute($request));
         return response($res->getBody(), $res->getStatusCode())->withHeaders($res->getHeaders());
     }
