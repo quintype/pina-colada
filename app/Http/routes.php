@@ -18,3 +18,8 @@ Route::get('/ping', function () {
 });
 
 Route::get('/preview/home', 'PreviewController@home');
+
+// These routes are localhost ONLY.
+Route::get('/qlitics.js', "ProxyController@proxyGet");
+Route::get('/api/{route}', "ProxyController@proxyGet")->where('route', '.*');
+Route::post('/api/{route}', "ProxyController@proxyPost")->where('route', '.*');
