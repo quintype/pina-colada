@@ -13,7 +13,13 @@ class ProxyController extends BaseController
     }
 
     function getRoute($request) {
-        return $this->host . "/" . $request->path();
+        $baseUrl = $this->host . "/" . $request->path();
+        $queryString = $request->getQueryString();
+
+        if($queryString && $queryString != "")
+            return $baseUrl . '?' . $queryString;
+        else
+            return $baseUrl;
     }
 
     public function proxyGet(Request $request)
