@@ -10,16 +10,26 @@ global.transformTemplates = function(x) {
   })
 };
 
-
-var TEMPLATES = {
-  "home_body": require("../../../resources/views/home/body.twig"),
-  "home_story": require("../../../resources/views/home/story.twig")
-};
-
 Twig.extendFunction("focusedImageUrl", function(slug, aspectRatio, metadata, options) {
   var cdn = global.qtConfig["image-cdn"];
   var image = new FocusedImage(slug, metadata);
   return cdn + "/" + image.path(aspectRatio, options);
 });
 
-module.exports = window.ooga = TEMPLATES;
+var ALL_TEMPLATES = {};
+function wrapTemplate(template) {
+  ALL_TEMPLATES[template.id] = template;
+  var importFile = template.importFile;
+  template.importFile = function(path) {
+    return ALL_TEMPLATES[path] || importFile.call(template, path);
+  }
+  return template;
+}
+
+wrapTemplate(require("../../../resources/views/home/story.twig"));
+
+var TEMPLATES = {
+  "home_body": wrapTemplate(require("../../../resources/views/home/body.twig"))
+};
+
+module.exports = TEMPLATES;
