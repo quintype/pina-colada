@@ -1,5 +1,7 @@
 var template = require("./templates").home_body;
 
+var $ = require("jquery");
+
 module.exports = function() {
   window.addEventListener("message", function(event){
     var story = event.data['story'];
