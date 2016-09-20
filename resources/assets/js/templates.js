@@ -16,20 +16,21 @@ Twig.extendFunction("focusedImageUrl", function(slug, aspectRatio, metadata, opt
   return cdn + "/" + image.path(aspectRatio, options);
 });
 
-var ALL_TEMPLATES = {};
-function wrapTemplate(template) {
-  ALL_TEMPLATES[template.id] = template;
-  var importFile = template.importFile;
-  template.importFile = function(path) {
-    return ALL_TEMPLATES[path] || importFile.call(template, path);
+Twig.extend(function(Twig) {
+  var importFile = Twig.Template.prototype.importFile;
+  Twig.Template.prototype.importFile = function(path) {
+    var cachedTemplate = Twig.Templates.registry[path];
+    if(cachedTemplate)
+      return cachedTemplate;
+    if(console) console.warn("Unable to find template: ", path);
+    importFile.call(this, path);
   }
-  return template;
-}
+});
 
-wrapTemplate(require("../../../resources/views/home/story.twig"));
+require("../../../resources/views/home/story.twig");
 
 var TEMPLATES = {
-  "home_body": wrapTemplate(require("../../../resources/views/home/body.twig"))
+  "home_body": require("../../../resources/views/home/body.twig")
 };
 
 module.exports = TEMPLATES;
