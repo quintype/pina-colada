@@ -19,7 +19,7 @@ Twig.extendFunction("focusedImageUrl", function(slug, aspectRatio, metadata, opt
 Twig.extend(function(Twig) {
   var importFile = Twig.Template.prototype.importFile;
   Twig.Template.prototype.importFile = function(path) {
-    var cachedTemplate = Twig.Templates.registry[path];
+    var cachedTemplate = Twig.Templates.registry[path] || Twig.Templates.registry["/" + path];
     if(cachedTemplate)
       return cachedTemplate;
     if(console) console.warn("Unable to find template: ", path);
