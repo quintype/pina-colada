@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         TwigBridge\ServiceProvider::class,
+        RyanNielson\Meta\MetaServiceProvider::class,
 
     ],
 
@@ -204,6 +205,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Meta' => RyanNielson\Meta\Meta::class,
 
     ],
 
