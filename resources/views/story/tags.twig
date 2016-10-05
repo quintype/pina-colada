@@ -1,0 +1,5 @@
+{% for tag in tags %}
+  <a href="/tag/{{ tag['name'] }}">
+    <span>{{ tag['name'] }}</span>
+  </a>
+{% endfor %}

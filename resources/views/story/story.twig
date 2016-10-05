@@ -1,0 +1,16 @@
+{% set storySection = story['sections']|first %}
+<article data-story-url="{{ story['slug'] }}" data-story-content-id= "{{ story['story-content-id'] }}" data-story-version-id="{{ story['story-version-id'] }}" class=" story-page story-view">
+  <h2 class="stories-list-story-headline">{{story['headline']}}</h2>
+  <h4 class= "story-sections">
+    {{ storySection['name'] }}
+  </h4>
+  <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+  <a href="/author/{{ story['author-id'] }}"><h4>{{story['author-name']}}</h4></a>
+  {% for card in story['cards'] %}
+    {% include '/story/storyCard' with {'storyCard': card } %}
+  {% endfor %}
+  <div class="tags">
+  {% include '/story/tags' with {'tags': story['tags'] } %}
+  </div>
+  <div class="comments"></div>
+</article>
