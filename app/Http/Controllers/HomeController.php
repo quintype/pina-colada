@@ -27,9 +27,9 @@ class HomeController extends QuintypeController{
     }
 
     public function story($category, $y, $m, $d, $slug) {
-      $story = $this->client->story(["slug"=> $slug]);//Get the story details.
-      $relatedStories = $this->client->storyRelated($story["id"], "related-stories");//Get all the stories related to this story.
-      $comments = $this->client->storyRelated($story["id"], "comments");//Get all the comments for this story.
+      $story = $this->client->storyBySlug(["slug"=> $slug]);//Get the story details.
+      $relatedStories = $this->client->relatedStories($story["id"]);//Get all the stories related to this story.
+      $comments = $this->client->storyComments($story["id"]);//Get all the comments for this story.
 
       return view("story", $this->toView([
           "story" => $story,
