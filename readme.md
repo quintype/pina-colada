@@ -11,6 +11,10 @@ cd pina-colada
 * Install all external libraries
 ```shell
 composer install # Install PHP Libraries
+To install composer use command :- curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+Then :- composer
+
 npm install # Install Javascript dependencies
 ```
 
