@@ -1133,7 +1133,7 @@
             "dist": {
                 "type": "path",
                 "url": "../quintype-api-php",
-                "reference": "6eca06cccf19714e29311b4bca393f6962cea4b2",
+                "reference": "bf359cc9f6c5230c18e74edba551ebb371578d6d",
                 "shasum": null
             },
             "require": {

@@ -11,13 +11,13 @@ use Quintype\Api\StoriesRequest;
 class HomeController extends QuintypeController{
 
     public function index(){
-      $bulk = new Bulk();
-      $bulk->addRequest("top_stories", (new StoriesRequest("top")));
-      $bulk->addRequest("politics", (new StoriesRequest("top"))->addParams(["section" => "Politics"]));
-      $bulk->execute($this->client);
 
-      $top_stories = $bulk->getResponse("top_stories");
-      $politics = $bulk->getResponse("politics");
+      $this->client->addBulkRequest("top_stories", (new StoriesRequest("top")));
+      $this->client->addBulkRequest("politics", (new StoriesRequest("top"))->addParams(["section" => "Politics"]));
+      $this->client->executeBulk($this->client);
+
+      $top_stories = $this->client->getBulkResponse("top_stories");
+      $politics = $this->client->getBulkResponse("politics");
 
       return view("home", $this->toView([
           "stories" => $top_stories,
