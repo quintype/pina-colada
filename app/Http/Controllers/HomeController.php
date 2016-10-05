@@ -62,6 +62,7 @@ class HomeController extends QuintypeController{
       $authorDetails = $this->client->getAuthor($authorId);
       $params =[
             "author-id" => $authorId,
+            "sort" => "latest-published",
             "limit" => 4,
             "fields" => $this->fields
         ];
