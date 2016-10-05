@@ -1,0 +1,15 @@
+<img src="{{focusedImageUrl(authorDetails['avatar-url'], [16,9], [], {w: 150})}}"/>
+<h3>{{ authorDetails['name'] }}</h3>
+<p>
+  <a href="#">
+    {{ authorDetails['twitter-handle'] }}
+  </a>
+</p>
+{% for story in authorStories %}
+<h3>
+  <a href="/{{ story['slug'] }}">
+    {{ story["headline"] }}
+  </a>
+</h3>
+{% endfor %}
+<h3>Load More</h3>

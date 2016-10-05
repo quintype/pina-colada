@@ -22,3 +22,13 @@ Route::get('/ping', function () {
 });
 
 Route::get('/preview/home', 'PreviewController@home');
+
+Route::get('/section/{section}', 'HomeController@section');
+
+Route::get('/{category}/{y}/{m}/{d}/{slug}', 'HomeController@story');
+
+Route::get('/author/{authorId}', 'HomeController@author');
+
+Route::get('/tag/{tag}', 'HomeController@tag');
+
+Route::get('/search/{searchKey}', 'HomeController@search');

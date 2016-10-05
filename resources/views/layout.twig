@@ -10,8 +10,8 @@
       <div class="layout-menu">
 	{% block menu %}
 	<ul>
-	  {% for menuItem in config.menuItems() %}
-	  <li><a href="{{menuItem.url()}}">{{menuItem.title()}}</a></li>
+	  {% for menuItem in menuItems %}
+	  <li><a href="/section/{{menuItem["section-slug"]}}">{{menuItem["title"]}}</a></li>
 	  {% endfor %}
 	</ul>
 	{% endblock %}

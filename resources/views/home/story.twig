@@ -1,4 +1,9 @@
-<a href="{{story['slug']}}" class="stories-list-story">
-  <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+{{ story|json_encode }}
+<article>
   <h2 class="stories-list-story-headline">{{story['headline']}}</h2>
-</a>
+  <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+  <a href="/author/{{ story['author-id'] }}"<h4>{{story['author-name']}}</h4>
+  {% for card in story['cards'] %}
+    {% include '/home/storyCard' with {'story': story} %}
+  {% endfor %}
+</article>
