@@ -1,5 +1,5 @@
-<p>story card twig</p>
-<p>{{ storyCard["content-id"]|json_encode }}</p>
 <div class="card-view" data-card-content-id="{{ storyCard['content-id'] }}" data-card-version-id="{{ storyCard['content-version-id'] }}">
-  story card sssss
+  {% for element in storyCard['story-elements'] %}
+    {% include 'story/storyElements' with {'storyElements': element} %}
+  {% endfor %}
 </div>
