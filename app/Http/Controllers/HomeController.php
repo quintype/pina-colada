@@ -5,16 +5,13 @@ namespace App\Http\Controllers;
 use Log;
 use App\Http\Controllers\QuintypeController;
 
-use Quintype\Api\Bulk;
-use Quintype\Api\StoriesRequest;
-
 class HomeController extends QuintypeController{
 
     public function index(){
+      $this->client->addBulkRequest("top_stories", "top");
+      $this->client->addBulkRequest("politics", "top", ["section" => "Politics"]);
 
-      $this->client->addBulkRequest("top_stories", (new StoriesRequest("top")));
-      $this->client->addBulkRequest("politics", (new StoriesRequest("top"))->addParams(["section" => "Politics"]));
-      $this->client->executeBulk($this->client);
+      $this->client->executeBulk();
 
       $top_stories = $this->client->getBulkResponse("top_stories");
       $politics = $this->client->getBulkResponse("politics");

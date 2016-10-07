@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0e0631e922b32d334180af660690ec5",
-    "content-hash": "b97642755c87cb0fc7a9662eede4d1b5",
+    "hash": "dd613d26f4de93b97deffeab385a0632",
+    "content-hash": "905c989037e6572e246e642060bcc162",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1129,16 +1129,16 @@
         },
         {
             "name": "quintype/api",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/quintype/quintype-api-php.git",
-                "reference": "bfa3cd51e25dc23c43c99abcec6c1dd4d0080644"
+                "reference": "c850530277834ef3faf9d4ec7430b38171b5137c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/bfa3cd51e25dc23c43c99abcec6c1dd4d0080644",
-                "reference": "bfa3cd51e25dc23c43c99abcec6c1dd4d0080644",
+                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/c850530277834ef3faf9d4ec7430b38171b5137c",
+                "reference": "c850530277834ef3faf9d4ec7430b38171b5137c",
                 "shasum": ""
             },
             "require": {
@@ -1151,7 +1151,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-10-05 09:42:58"
+            "time": "2016-10-07 06:04:37"
         },
         {
             "name": "rcrowe/twigbridge",
