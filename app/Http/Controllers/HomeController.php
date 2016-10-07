@@ -41,21 +41,25 @@ class HomeController extends QuintypeController{
 
     public function section($section) {
       $sections = $this->config["sections"];//Get all sections.
-      $cur_section =  $sections[array_search($section, array_column($sections, "slug"), true)];//Get details of the selected section.
+      $cur_section_index = array_search($section, array_column($sections, "slug"), true);//Get the index of the selected section.
+      if($cur_section_index !== false){
+        $cur_section =  $sections[$cur_section_index];//Get details of the selected section.
+        $params = [
+            "story-group" => "top",
+            "section" => $cur_section["name"],
+            "limit" => 8,
+            "fields" => $this->fields
+        ];
+        $stories = $this->client->stories($params);
 
-      $params = [
-          "story-group" => "top",
-          "section" => $cur_section["name"],
-          "limit" => 8,
-          "fields" => $this->fields
-      ];
-      $stories = $this->client->stories($params);
-
-      return view("section", $this->toView([
-          "stories" => $stories,
-          "sectionName" => $cur_section["name"]
-        ])
-      );
+        return view("section", $this->toView([
+            "stories" => $stories,
+            "sectionName" => $cur_section["name"]
+          ])
+        );
+      } else {
+        return "404 Page";
+      }
     }
 
     public function author($authorId) {

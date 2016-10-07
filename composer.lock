@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0e0631e922b32d334180af660690ec5",
-    "content-hash": "b97642755c87cb0fc7a9662eede4d1b5",
+    "hash": "e0ae872c9d2771933f4d6b4cea363a50",
+    "content-hash": "46124f2d44cd1c44aee700acb660f723",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1129,17 +1129,12 @@
         },
         {
             "name": "quintype/api",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/quintype/quintype-api-php.git",
-                "reference": "bfa3cd51e25dc23c43c99abcec6c1dd4d0080644"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/bfa3cd51e25dc23c43c99abcec6c1dd4d0080644",
+                "type": "path",
+                "url": "../quintype-api-php",
                 "reference": "bfa3cd51e25dc23c43c99abcec6c1dd4d0080644",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2"
@@ -1149,9 +1144,7 @@
                 "psr-0": {
                     "Quintype": "src"
                 }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-10-05 09:42:58"
+            }
         },
         {
             "name": "rcrowe/twigbridge",
@@ -2051,16 +2044,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.26.0",
+            "version": "v1.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "81c2b5fd36581370c7731387f05dcdb577050513"
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/81c2b5fd36581370c7731387f05dcdb577050513",
-                "reference": "81c2b5fd36581370c7731387f05dcdb577050513",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
                 "shasum": ""
             },
             "require": {
@@ -2108,7 +2101,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-10-02 16:19:13"
+            "time": "2016-10-05 18:57:41"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3536,7 +3529,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "quintype/api": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
