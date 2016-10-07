@@ -1,18 +1,22 @@
 {% set storySection = story['sections']|first %}
+<div class="story_page">
 <article data-story-url="{{ story['slug'] }}" data-story-content-id= "{{ story['story-content-id'] }}" data-story-version-id="{{ story['story-version-id'] }}" class=" story-page story-view">
-  <h1 class="stories-list-story-headline">{{story['headline']}}</h1>
-  <h4 class= "story-sections">
-    {{ storySection['name'] }}
-  </h4>
-  <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
-  <a href="/author/{{ story['author-id'] }}"><h4>{{story['author-name']}}</h4></a>
-  {% for card in story['cards'] %}
-    {% include '/story/storyCard' with {'storyCard': card } %}
-  {% endfor %}
-  <div class="tags">
-  {% include '/story/tags' with {'tags': story['tags'] } %}
+  <div class="article_header">
+    {% include '/story/article_header' with {'story' : story } %}
   </div>
-  <div class="related-stories">
+  <div class="article_body">
+    {% for card in story['cards'] %}
+      {% include '/story/storyCard' with {'storyCard': card } %}
+    {% endfor %}
+    <div id="youtube-iframe-api"></div>
+    <div class="tags">
+    {% include '/story/tags' with {'tags': story['tags'] } %}
+    </div>
+    <div class="related-stories">
+      <h3>Related Stories</h3>
+      {% include '/story/related_stories' with {'story': relatedStories } %}
+    </div>
+    <div class="comments"></div>
   </div>
-  <div class="comments"></div>
 </article>
+</div>

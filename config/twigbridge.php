@@ -180,6 +180,7 @@ return [
             'last',
             'assetPath',
             'focusedImageUrl',
+            'base64_decode'
         ],
 
         /*

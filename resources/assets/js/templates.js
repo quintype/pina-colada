@@ -27,7 +27,7 @@ Twig.extend(function(Twig) {
   }
 });
 
-require("../../../resources/views/home/story.twig");
+require("../../../resources/views/story/story.twig");
 
 var TEMPLATES = {
   "home_body": require("../../../resources/views/home/body.twig")
