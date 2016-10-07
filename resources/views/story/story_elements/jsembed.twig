@@ -1,0 +1,4 @@
+<div class="card__element--jsembed
+    {% if element['subtype'] %} card__element--{{ element['subtype'] }} js-{{ element['subtype'] }} {% endif %}" >
+  {{ (element['embed-js'])|raw }}
+</div>
