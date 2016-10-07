@@ -28,9 +28,13 @@ Twig.extend(function(Twig) {
 });
 
 require("../../../resources/views/home/story.twig");
+require("../../../resources/views/home/list_article_list.twig");
+require("../../../resources/views/load_more_stories.twig");
+require("../../../resources/views/home/list_article.twig");
 
 var TEMPLATES = {
-  "home_body": require("../../../resources/views/home/body.twig")
+  "home_body": require("../../../resources/views/home/body.twig"),
+  "list_articles": require("../../../resources/views/home/list_article_list.twig")
 };
 
 module.exports = TEMPLATES;

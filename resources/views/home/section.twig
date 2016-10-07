@@ -10,6 +10,17 @@
     </div>
   </a>
 {% endfor %}
-<div>
-  <h2>Load More</h2>
+<div class="sectionpage-articles ">
+      <div class="load-more-results list-article">
+      </div>
+      <div class="load-more-button load-article-container">
+        {% include "load_more_stories" %}
+      </div>
 </div>
+<script type="text/javascript">
+  var storyTemplate = "list_articles" ;
+  var api ='/api/v1/stories?fields=sections,hero-image-s3-key,headline,author-name,summary,first-published-at,slug&section=' + '{{section_engname}}';
+  qtReady.push(function() { app.quintypeLoadMore($(".sectionpage-articles"), {limit: 7}, 8 ,api,storyTemplate);
+   });
+</script>
+
