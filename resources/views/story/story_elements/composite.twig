@@ -1,2 +1,14 @@
-<h1>composite type</h1>
-<h4>image gallery</h4>
+{% if element['metadata']['type'] == 'slideshow' %}
+  {% set image_gallery_type ='slideshow' %}
+{% else %}
+  {% set image_gallery_type ='gallery' %}
+{% endif %}
+
+<div class="story-element-composite story-element-{{ image_gallery_type }} {{ image_gallery_type }}">
+  {% for images in element['story-elements'] %}
+      <figure>
+        <img srcset ="{{focusedImageUrl(images['image-s3-key'], [16,9], images['image-metadata'], {w: 640})}}"/>
+      </figure>
+      <figcaption>{{ images['title'] }}</figcaption>
+  {% endfor %}
+</div>

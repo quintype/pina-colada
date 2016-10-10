@@ -6,6 +6,19 @@ global.app = {
 };
 
 $(document).ready(function() {
+  $('.story-element-composite').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true
+      }
+    }]
+  });
   app.initQtReady();
   app.video.setupYoutubeVideo();
   app.video.loadYoutubeLibrary();
