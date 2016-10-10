@@ -12,7 +12,7 @@
 	{% block menu %}
 	<ul>
 	  {% for menuItem in menuItems %}
-	  <li><a href="/section/{{menuItem["section-slug"]}}">{{menuItem["title"]}}</a></li>
+	  <li><a href="{{menuItem.url()}}">{{menuItem.title()}}</a></li>
 	  {% endfor %}
 	</ul>
 	{% endblock %}

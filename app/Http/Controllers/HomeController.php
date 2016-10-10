@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Log;
 use App\Http\Controllers\QuintypeController;
 
+use Quintype\Api\Bulk;
+use Quintype\Api\StoriesRequest;
+
 class HomeController extends QuintypeController{
 
     public function index(){

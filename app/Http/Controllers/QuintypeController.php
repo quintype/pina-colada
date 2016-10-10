@@ -17,7 +17,7 @@ class QuintypeController extends Controller
     public function toView($args) {
         return array_merge([
             "config" => $this->config,
-            "menuItems" => $this->config["layout"]["menu"]
+            "menuItems" => $this->client->menuItems($this->config["layout"]["menu"])
         ], $args);
     }
 }
