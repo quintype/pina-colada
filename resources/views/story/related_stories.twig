@@ -2,7 +2,9 @@
 <article>
   <a href="/{{ story['slug'] }}">
     <h3>{{ story['headline'] }}</h3>
-    <img src="{{ focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 150}) }}"/>
+    <figure>
+      <img src="{{ focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 450}) }}"/>
+    </figure>
   </a>
 </article>
 {% endfor %}

@@ -2,41 +2,15 @@ global.app = {
   initQtReady: require("./qt_ready"),
   startHomePreview: require("./home_preview"),
   video: require("./video"),
-  quintypeLoadMore : require("./load_more")
+  quintypeLoadMore : require("./load_more"),
+  mapOverlay : require("./map_overlay"),
+  slickSlideShow : require("./slick_slideShow_settings")
 };
 
 $(document).ready(function() {
-  $('.story-element-composite').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true
-      }
-    }]
-  });
-  app.initQtReady();
+  app.slickSlideShow.slickSettings();
   app.video.setupYoutubeVideo();
   app.video.loadYoutubeLibrary();
-  locationOverlay();
+  app.mapOverlay.locationOverlay();
+  app.initQtReady();
 });
-
-// need to fix. export to a another file
-
-function locationOverlay() {
-  $(document).on('click', '.story-element-location', function() {
-    $(this).find('iframe').css('pointer-events', 'auto');
-  });
-
-  $(document).on('mouseenter', '.story-element-location', function() {
-    $(this).find('iframe').css('pointer-events', 'none');
-  });
-
-  $(document).on('mouseleave', '.story-element-location', function() {
-    $(this).find('iframe').css('pointer-events', 'none');
-  });
-}

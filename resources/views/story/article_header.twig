@@ -4,10 +4,14 @@
 <h4 class= "article_header-sections">
   {{ storySection['name'] }}
 </h4>
+<div class="article_header-share">
+  {% include 'story/share' with {'url': story['slug'] ,'headline': story['headline'] } %}
+</div>
 <div class="article_header-hero-image">
-  <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+  <figure>
+    <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+  </figure>
 </div>
 <div class="article_header-byline">
   <a href="/author/{{ story['author-id'] }}"><h4>{{story['author-name']}}</h4></a>
 </div>
-<div class="article_header-share"></div>
