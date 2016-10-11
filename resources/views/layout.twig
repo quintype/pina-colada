@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Quintype Sample App</title>
-    <link rel="stylesheet" type="text/css" href="{{ assetPath("application.css") }}"/>
-  </head>
-  <body>
-    <script type="text/javascript">var qtReady = qtReady || [];</script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <div class="body-container">
-      <div class="layout-menu">
-	{% block menu %}
-	<ul>
-	  {% for menuItem in menuItems %}
-	  <li><a href="{{menuItem.url()}}">{{menuItem.title()}}</a></li>
-	  {% endfor %}
-	</ul>
-	{% endblock %}
-      </div>
-      <div class="layout-content">
-	<div id="container">
-	  {% block content %}{% endblock %}
-	</div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <script type="text/javascript">
-      var qtConfig = {
-        "image-cdn": "{{config("quintype.image-cdn")}}"
-      };
-    </script>
-    <script type="text/javascript" src="{{ assetPath("application.js") }}"></script>
-    <!-- adding slick files -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-    <script type="text/javascript">
-      app.initQtReady();
-    </script>
-  </body>
+<head>
+  <title>Quintype Sample App</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="{{ assetPath("application.css") }}"/>
+</head>
+<body>
+  <script type="text/javascript">var qtReady = qtReady || [];</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <div class="body-container">
+    <div class="layout-menu">
+     {% block menu %}
+       <ul>
+         {% for menuItem in menuItems %}
+           <li><a href="{{menuItem.url()}}">{{menuItem.title()}}</a></li>
+         {% endfor %}
+       </ul>
+     {% endblock %}
+   </div>
+   <div class="layout-content">
+     <div id="container">
+       {% block content %}{% endblock %}
+       </div>
+     </div>
+     <div class="clear"></div>
+   </div>
+   <script type="text/javascript">
+    var qtConfig = {
+      "image-cdn": "{{config("quintype.image-cdn")}}"
+    };
+  </script>
+  <script type="text/javascript" src="{{ assetPath("application.js") }}"></script>
+  <!-- adding slick files -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+  <script type="text/javascript">
+    app.initQtReady();
+  </script>
+</body>
 </html>
