@@ -1,11 +1,11 @@
 var _ = require("lodash");
 
-function quintypeLoadMore (container, params, offset,api,storyTemplate) {
-  var api ,moreStoriesTemplate ,stories;
+function quintypeLoadMore (container, params, offset, api, storyTemplate) {
+  var moreStoriesTemplate ,stories;
   var api_search='/api/v1/search?';
   moreStoriesTemplate = require("./templates");
-  moreStoriesTemplate=moreStoriesTemplate[storyTemplate];
-  var loadButton= container.find('.load-more-button');
+  moreStoriesTemplate = moreStoriesTemplate[storyTemplate];
+  var loadButton = container.find('.load-more-button');
   var loadImage = container.find('.load-image');
   params = _.extend({limit: 20}, params);
   container.find(".load-more-button").click(function() {
@@ -16,7 +16,7 @@ function quintypeLoadMore (container, params, offset,api,storyTemplate) {
       }
       else {
         stories = response.stories;
-        }
+      }
       if(stories.length > 0) {
         offset = offset + params.limit;
         container.find(".load-more-results").append(moreStoriesTemplate.render({stories: stories}));

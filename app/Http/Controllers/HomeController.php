@@ -46,7 +46,7 @@ class HomeController extends QuintypeController{
         $cur_section =  $sections[$cur_section_index];//Get details of the selected section.
         $params = [
             "story-group" => "top",
-            "section" => $cur_section["name"],
+            "section-id" => $cur_section["id"],
             "limit" => 8,
             "fields" => $this->fields
         ];
@@ -54,7 +54,8 @@ class HomeController extends QuintypeController{
 
         return view("section", $this->toView([
             "stories" => $stories,
-            "sectionName" => $cur_section["name"]
+            "sectionName" => $cur_section["name"],
+            "sectionId" => $cur_section["id"]
           ])
         );
       } else {
