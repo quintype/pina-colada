@@ -11,11 +11,9 @@ use Quintype\Api\StoriesRequest;
 class HomeController extends QuintypeController{
 
     public function index(){
-      $this->client->addBulkRequest("top_stories", "top", ["fields" => $this->fields]);//Default stack.
+      $this->client->addBulkRequest("top_stories", "top", ["fields" => $this->fields, "limit" => 8]);//Default stack.
       $this->client->buildStacksRequest($this->stacks, $this->fields);//Build all stack requests dynamically.
-
       $this->client->executeBulk();//Use the bulk request and make the API call.
-
       $top_stories = $this->client->getBulkResponse("top_stories");//Get just the default stack stories.
       $stacks = $this->client->buildStacks($this->stacks);//Get all stacks stories.
 

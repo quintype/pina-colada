@@ -31,6 +31,7 @@ require("../../../resources/views/story/story.twig");
 require("../../../resources/views/home/list_article_list.twig");
 require("../../../resources/views/load_more_stories.twig");
 require("../../../resources/views/home/list_article.twig");
+require("../../../resources/views/home/index.twig");
 
 var TEMPLATES = {
   "home_body": require("../../../resources/views/home/body.twig"),

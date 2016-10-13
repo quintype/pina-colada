@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0ae872c9d2771933f4d6b4cea363a50",
-    "content-hash": "46124f2d44cd1c44aee700acb660f723",
+    "hash": "06d8e13807f9ee3957c23e3bca44aee3",
+    "content-hash": "c67a2331da7ac4a633db95c828134508",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1129,12 +1129,17 @@
         },
         {
             "name": "quintype/api",
-            "version": "dev-master",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quintype/quintype-api-php.git",
+                "reference": "8591b766d80a38673589c41e1454d46c7ec7a316"
+            },
             "dist": {
-                "type": "path",
-                "url": "../quintype-api-php",
-                "reference": "4db98e8a40b7cdf1bcc14d0cfcee87e4b7b0670a",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/8591b766d80a38673589c41e1454d46c7ec7a316",
+                "reference": "8591b766d80a38673589c41e1454d46c7ec7a316",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2"
@@ -1144,7 +1149,9 @@
                 "psr-0": {
                     "Quintype": "src"
                 }
-            }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2016-10-13 10:17:51"
         },
         {
             "name": "rcrowe/twigbridge",
@@ -3529,9 +3536,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "quintype/api": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
