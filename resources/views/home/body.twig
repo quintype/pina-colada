@@ -1,5 +1,31 @@
-<ul class="stories-list">
-{% for story in stories %}
-<li>{% include '/home/index' with {'story': story} %}</li>
-{% endfor %}
-</ul>
+<div class="home-page">
+  <div class="container">
+    <ul class="stories-list">
+      {% for story in stories %}
+      <li>{% include '/home/index' with {'story': story} %}</li>
+      {% endfor %}
+    </ul>
+
+    <aside class="home-page__side-bar">
+      {% for stack in stacks %}
+        <article class="side-bar__stack">
+          <h1 class="stack__title">{{ stack.heading }}</h1>
+          <ul>
+            {% for story in stack.stories %}
+            <li>
+              <a href="/{{ story["slug"] }}">
+                <h3 class="stack__heading">{{ story["headline"] }}</h3>
+                <p class="stack__summary">{{ story["summary"] }}</p>
+                <div class="stack__byline">
+                  <span class="stack__author-name">{{ story["author-name"] }}</span>
+                  <span class="stack__published-date">{{ story["last-published-at"] }}</span>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </article>
+      {% endfor %}
+    </aside>
+  </div>
+</div>

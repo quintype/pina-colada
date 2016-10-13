@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "825f8186e3fd620965fef5a2bef25f2b",
-    "content-hash": "f9aabbc76c6cc3a08b3524b355101e8a",
+    "hash": "e0ae872c9d2771933f4d6b4cea363a50",
+    "content-hash": "46124f2d44cd1c44aee700acb660f723",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1010,16 +1010,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
@@ -1053,7 +1053,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-09-19 16:02:08"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "psy/psysh",
@@ -1129,17 +1129,12 @@
         },
         {
             "name": "quintype/api",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/quintype/quintype-api-php.git",
-                "reference": "ba974d543c82dffba12e5e762bd400297c8dd2e8"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/ba974d543c82dffba12e5e762bd400297c8dd2e8",
-                "reference": "ba974d543c82dffba12e5e762bd400297c8dd2e8",
-                "shasum": ""
+                "type": "path",
+                "url": "../quintype-api-php",
+                "reference": "4db98e8a40b7cdf1bcc14d0cfcee87e4b7b0670a",
+                "shasum": null
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2"
@@ -1149,9 +1144,7 @@
                 "psr-0": {
                     "Quintype": "src"
                 }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-10-10 06:33:35"
+            }
         },
         {
             "name": "rcrowe/twigbridge",
@@ -3536,7 +3529,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "quintype/api": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
