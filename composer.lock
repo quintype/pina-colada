@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "76e9426010a9544d3d6c408effb0ec2a",
-    "content-hash": "8540baa30b50b9188de9cdf9798a2f58",
+    "hash": "8bb1cc2308cc8b5fcd6d00e80dd6954f",
+    "content-hash": "379ba79cfa61fcd4b39a7c75e90f1d26",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1152,6 +1152,79 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2016-10-14 07:20:45"
+        },
+        {
+            "name": "quintype/meta",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quintype/meta.git",
+                "reference": "370aa8124f714128afdcd55353a311011582cf35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quintype/meta/zipball/370aa8124f714128afdcd55353a311011582cf35",
+                "reference": "370aa8124f714128afdcd55353a311011582cf35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "2.0.*@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Quintype\\Meta\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Nielson",
+                    "email": "ryan.nielson@gmail.com",
+                    "homepage": "http://nielson.io"
+                },
+                {
+                    "name": "Anagh Padmanabhan",
+                    "email": "anagh.parambath@gmail.com"
+                }
+            ],
+            "description": "A package that makes it easy to add meta tags to your views. Includes easy Laravel integration.",
+            "homepage": "https://github.com/quintype/meta",
+            "keywords": [
+                "laravel",
+                "meta",
+                "view"
+            ],
+            "time": "2016-10-14 09:51:50"
+        },
+        {
+            "name": "quintype/seo",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quintype/quintype-seo-php.git",
+                "reference": "940df05146a8e5caaabc62de060ef42eb7799033"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quintype/quintype-seo-php/zipball/940df05146a8e5caaabc62de060ef42eb7799033",
+                "reference": "940df05146a8e5caaabc62de060ef42eb7799033",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Quintype": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2016-10-14 13:06:01"
         },
         {
             "name": "rcrowe/twigbridge",

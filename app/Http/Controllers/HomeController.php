@@ -11,15 +11,22 @@ use Quintype\Api\StoriesRequest;
 class HomeController extends QuintypeController{
 
     public function index(){
-      $this->client->addBulkRequest("top_stories", "top", ["fields" => $this->fields, "limit" => 8]);//Default stack.
-      $this->client->buildStacksRequest($this->stacks, $this->fields);//Build all stack requests dynamically.
+      $this->client->addBulkRequest("top_stories", "top", ["fields" => config("quintype.fields"), "limit" => 8]);//Default stack.
+      $this->client->buildStacksRequest($this->config["layout"]["stacks"], config("quintype.fields"));//Build all stack requests dynamically.
       $this->client->executeBulk();//Use the bulk request and make the API call.
       $top_stories = $this->client->getBulkResponse("top_stories");//Get just the default stack stories.
-      $stacks = $this->client->buildStacks($this->stacks);//Get all stacks stories.
+      $stacks = $this->client->buildStacks($this->config["layout"]["stacks"]);//Get all stacks stories.
+
+      $page = ["type" => "home"];
+      //Set SEO meta tags.
+      $setSeo = $this->seo->home($page["type"]);
+      $this->meta->set($setSeo->prepareTags());
 
       return view("home", $this->toView([
           "stories" => $top_stories,
-          "stacks" => $stacks
+          "stacks" => $stacks,
+          "page" => $page,
+          "meta" => $this->meta
         ])
       );
     }
@@ -29,10 +36,17 @@ class HomeController extends QuintypeController{
       $relatedStories = $this->client->relatedStories($story["id"]);//Get all the stories related to this story.
       $comments = $this->client->storyComments($story["id"]);//Get all the comments for this story.
 
+      $page = ["type" => "story"];
+      //Set SEO meta tags.
+      $setSeo = $this->seo->story($page["type"], $story);
+      $this->meta->set($setSeo->prepareTags());
+
       return view("story", $this->toView([
           "story" => $story,
           "relatedStories" => $relatedStories,
-          "comments" => $comments
+          "comments" => $comments,
+          "page" => $page,
+          "meta" => $this->meta
         ])
       );
     }
@@ -46,14 +60,21 @@ class HomeController extends QuintypeController{
             "story-group" => "top",
             "section-id" => $cur_section["id"],
             "limit" => 8,
-            "fields" => $this->fields
+            "fields" => config("quintype.fields")
         ];
         $stories = $this->client->stories($params);
+
+        $page = ["type" => "section"];
+        //Set SEO meta tags.
+        $setSeo = $this->seo->section($page["type"], $cur_section["name"], $cur_section["id"]);
+        $this->meta->set($setSeo->prepareTags());
 
         return view("section", $this->toView([
             "stories" => $stories,
             "sectionName" => $cur_section["name"],
-            "sectionId" => $cur_section["id"]
+            "sectionId" => $cur_section["id"],
+            "page" => $page,
+            "meta" => $this->meta
           ])
         );
       } else {
@@ -67,7 +88,7 @@ class HomeController extends QuintypeController{
             "author-id" => $authorId,
             "sort" => "latest-published",
             "limit" => 4,
-            "fields" => $this->fields
+            "fields" => config("quintype.fields")
         ];
       $authorStories = $this->client->search($params);
 
@@ -86,9 +107,16 @@ class HomeController extends QuintypeController{
         ];
       $pickedStories = $this->client->stories($params);
 
+      $page = ["type" => "tag"];
+      //Set SEO meta tags.
+      $setSeo = $this->seo->tag($tag);
+      $this->meta->set($setSeo->prepareTags());
+
       return view("tag", $this->toView([
           "stories" => $pickedStories,
-          "sectionName" => $tag
+          "sectionName" => $tag,
+          "page" => $page,
+          "meta" => $this->meta
         ])
       );
     }
@@ -100,9 +128,16 @@ class HomeController extends QuintypeController{
         ];
       $pickedStories = $this->client->search($params);
 
+      $page = ["type" => "search"];
+      //Set SEO meta tags.
+      $setSeo = $this->seo->search($searchKey);
+      $this->meta->set($setSeo->prepareTags());
+
       return view("search", $this->toView([
           "stories" => $pickedStories,
-          "sectionName" => $searchKey
+          "sectionName" => $searchKey,
+          "page" => $page,
+          "meta" => $this->meta
         ])
       );
     }
