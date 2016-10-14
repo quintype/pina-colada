@@ -23,6 +23,8 @@ Route::get('/ping', function () {
 
 Route::get('/preview/home', 'PreviewController@home');
 
+Route::get('/preview/story', 'PreviewController@story');
+
 Route::get('/section/{section}', 'HomeController@section');
 
 Route::get('/{category}/{y}/{m}/{d}/{slug}', 'HomeController@story');

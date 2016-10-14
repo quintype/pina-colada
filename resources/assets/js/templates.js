@@ -27,14 +27,49 @@ Twig.extend(function(Twig) {
   }
 });
 
+Twig.extendFunction("base64_decode", function(string) {
+   return atob(string);
+});
+
 require("../../../resources/views/story/story.twig");
 require("../../../resources/views/home/list_article_list.twig");
 require("../../../resources/views/load_more_stories.twig");
 require("../../../resources/views/home/list_article.twig");
 require("../../../resources/views/home/index.twig");
+require("../../../resources/views/story/article_header.twig");
+require("../../../resources/views/story/related_stories.twig");
+require("../../../resources/views/story/storyCard.twig");
+require("../../../resources/views/story/storyElements.twig");
+require("../../../resources/views/story/tags.twig");
+require("../../../resources/views/story/share.twig");
+
+require("../../../resources/views/story/social_icons/facebook_svg_icon.twig");
+require("../../../resources/views/story/social_icons/twitter_svg_icon.twig");
+require("../../../resources/views/story/social_icons/gplus_svg_icon.twig");
+require("../../../resources/views/story/social_icons/linkedin_svg_icon.twig");
+require("../../../resources/views/story/social_icons/whatsapp_svg_icon.twig");
+
+require("../../../resources/views/story/story_elements/composite.twig");
+require("../../../resources/views/story/story_elements/image.twig");
+require("../../../resources/views/story/story_elements/jsembed.twig");
+require("../../../resources/views/story/story_elements/references.twig");
+require("../../../resources/views/story/story_elements/soundcloud-audio.twig");
+require("../../../resources/views/story/story_elements/text.twig");
+require("../../../resources/views/story/story_elements/title.twig");
+require("../../../resources/views/story/story_elements/youtube-video.twig");
+
+require("../../../resources/views/story/story_elements/story_elements_sub_type/bigfact.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/blockquote.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/blurb.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/image-gallery.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/q-and-a.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/quote.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/summary.twig");
+
 
 var TEMPLATES = {
   "home_body": require("../../../resources/views/home/body.twig"),
+  "story_body": require("../../../resources/views/story/story.twig"),
   "list_articles": require("../../../resources/views/home/list_article_list.twig")
 };
 

@@ -10,4 +10,9 @@ class PreviewController extends QuintypeController
     {
         return view('preview_home', $this->toView([]));
     }
+
+    public function story()
+    {
+        return view('preview_story', $this->toView([]));
+    }
 }
