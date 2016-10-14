@@ -9,7 +9,7 @@
         "laravel/framework": "5.2.*",
         "guzzlehttp/guzzle": "~6.0",
         "rcrowe/twigbridge": "^0.9.2",
-        "quintype/api": "1.0.3"
+        "quintype/api": "1.0.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
