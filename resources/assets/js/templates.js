@@ -51,8 +51,8 @@ require("../../../resources/views/story/body.twig");
 require("../../../resources/views/story/index.twig");
 require("../../../resources/views/story/related_stories.twig");
 require("../../../resources/views/story/share.twig");
-require("../../../resources/views/story/storyCard.twig");
-require("../../../resources/views/story/storyElements.twig");
+require("../../../resources/views/story/story_card.twig");
+require("../../../resources/views/story/story_elements.twig");
 require("../../../resources/views/story/tags.twig");
 
 require("../../../resources/views/story/social_icons/facebook_svg_icon.twig");

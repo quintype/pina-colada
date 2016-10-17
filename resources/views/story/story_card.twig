@@ -1,5 +1,5 @@
 <div class="card-view" data-card-content-id="{{ storyCard['content-id'] }}" data-card-version-id="{{ storyCard['content-version-id'] }}">
   {% for element in storyCard['story-elements'] %}
-    {% include 'story/storyElements' with {'storyElements': element} %}
+    {% include 'story/story_elements' with {'storyElements': element} %}
   {% endfor %}
 </div>
