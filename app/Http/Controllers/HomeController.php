@@ -92,7 +92,7 @@ class HomeController extends QuintypeController{
         ];
       $authorStories = $this->client->search($params);
 
-      return view("author", $this->toView([
+      return view("author/index", $this->toView([
           "authorDetails" => $authorDetails,
           "authorStories" => $authorStories
         ])
