@@ -8,11 +8,11 @@ class PreviewController extends QuintypeController
 {
     public function home()
     {
-        return view('preview_home', $this->toView([]));
+        return view('previews/preview_home', $this->toView([]));
     }
 
     public function story()
     {
-        return view('preview_story', $this->toView([]));
+        return view('previews/preview_story', $this->toView([]));
     }
 }
