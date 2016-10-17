@@ -133,7 +133,7 @@ class HomeController extends QuintypeController{
       $setSeo = $this->seo->search($searchKey);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("search", $this->toView([
+      return view("search/index", $this->toView([
           "stories" => $pickedStories,
           "sectionName" => $searchKey,
           "page" => $page,
