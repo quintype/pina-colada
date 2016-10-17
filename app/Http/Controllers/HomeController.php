@@ -69,7 +69,7 @@ class HomeController extends QuintypeController{
         $setSeo = $this->seo->section($page["type"], $cur_section["name"], $cur_section["id"]);
         $this->meta->set($setSeo->prepareTags());
 
-        return view("section", $this->toView([
+        return view("section/index", $this->toView([
             "stories" => $stories,
             "sectionName" => $cur_section["name"],
             "sectionId" => $cur_section["id"],
