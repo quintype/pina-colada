@@ -22,7 +22,7 @@ class HomeController extends QuintypeController{
       $setSeo = $this->seo->home($page["type"]);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("home", $this->toView([
+      return view("home/index", $this->toView([
           "stories" => $top_stories,
           "stacks" => $stacks,
           "page" => $page,

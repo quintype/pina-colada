@@ -1,6 +1,5 @@
-<li class="home-page__story story">
-  <a href="{{story['slug']}}" class="story__link">
-    <img class="story__image" src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
-    <h2 class="story__title">{{story['headline']}}</h2>
-  </a>
-</li>
+{% extends "layout" %}
+
+{% block content %}
+{% include "/home/body" %}
+{% endblock %}
