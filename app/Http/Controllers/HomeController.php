@@ -41,7 +41,7 @@ class HomeController extends QuintypeController{
       $setSeo = $this->seo->story($page["type"], $story);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("story", $this->toView([
+      return view("story/index", $this->toView([
           "story" => $story,
           "relatedStories" => $relatedStories,
           "comments" => $comments,
@@ -112,7 +112,7 @@ class HomeController extends QuintypeController{
       $setSeo = $this->seo->tag($tag);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("tag", $this->toView([
+      return view("tag/index", $this->toView([
           "stories" => $pickedStories,
           "sectionName" => $tag,
           "page" => $page,

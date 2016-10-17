@@ -31,7 +31,7 @@ Twig.extendFunction("base64_decode", function(string) {
    return atob(string);
 });
 
-require("../../../resources/views/story/story.twig");
+require("../../../resources/views/story/body.twig");
 require("../../../resources/views/home/list_article_list.twig");
 require("../../../resources/views/load_more_stories.twig");
 require("../../../resources/views/home/list_article.twig");
@@ -69,7 +69,7 @@ require("../../../resources/views/story/story_elements/story_elements_sub_type/s
 
 var TEMPLATES = {
   "home_body": require("../../../resources/views/home/body.twig"),
-  "story_body": require("../../../resources/views/story/story.twig"),
+  "story_body": require("../../../resources/views/story/body.twig"),
   "list_articles": require("../../../resources/views/home/list_article_list.twig")
 };
 
