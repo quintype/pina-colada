@@ -4,7 +4,7 @@
       href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}/{{ story['slug'] }}&amp;t={{ story['summary'] }}"
       data-service="facebook"
       data-social-media-type="facebook"
-      data-social-media-share-url="{{ story['slug'] }}"
+      data-social-media-share-url="{{ site_url }}/{{ story['slug'] }}"
       data-mobile-iframe="true">
     {% include "story/social_icons/facebook_svg_icon" %}
   </a>
@@ -13,31 +13,31 @@
       href="https://twitter.com/intent/tweet?url={{ site_url }}/{{story['slug']}}&amp;text={{ story['headline'] | trim | url_encode  }}"
       data-service="twitter"
       data-social-media-type="twitter"
-      data-social-media-share-url="{{ story['slug'] }}">
+      data-social-media-share-url="{{ site_url }}/{{ story['slug'] }}">
      {% include "story/social_icons/twitter_svg_icon" %}
   </a>
   <a  class="gplus social-share"
       target="_blank"
-      href="https://plus.google.com/share?url={{ story['slug'] }}"
+      href="https://plus.google.com/share?url={{ site_url }}/{{ story['slug'] }}"
       data-service="google_plusone_share"
       data-social-media-type="google_plusone_share"
-      data-social-media-share-url="{{ story['slug'] }}">
+      data-social-media-share-url="{{ site_url }}/{{ story['slug'] }}">
      {% include "story/social_icons/gplus_svg_icon" %}
   </a>
   <a  class="linkedin social-share"
       target="_blank"
-      href="https://www.linkedin.com/shareArticle?mini=true&url={{ story['slug'] }}"
+      href="https://www.linkedin.com/shareArticle?mini=true&url={{ site_url }}/{{ story['slug'] }}"
       data-service="linkedin"
       data-social-media-type="linkedin"
-      data-social-media-share-url="{{ story['slug'] }}">
+      data-social-media-share-url="{{ site_url }}/{{ story['slug'] }}">
      {% include "story/social_icons/linkedin_svg_icon" %}
   </a>
   <a  class="whatsapp social-share"
       target="_blank"
-      href="whatsapp://send?text={{ story['slug'] }}"
+      href="whatsapp://send?text={{ site_url }}/{{ story['slug'] }}"
       data-service="whatsapp"
       data-social-media-type="whatsapp"
-      data-social-media-share-url="{{ story['slug'] }}">
+      data-social-media-share-url="{{ site_url }}/{{ story['slug'] }}">
      {% include "story/social_icons/whatsapp_svg_icon" %}
   </a>
 </div>
