@@ -1,3 +1,6 @@
+global.$ = global.jQuery = require("jquery");
+require("jquery.marquee");
+
 global.app = {
   initQtReady: require("./qt_ready"),
   startHomePreview: require("./home_preview"),
