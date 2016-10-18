@@ -1,6 +1,12 @@
 {% set storySection = story['sections']|first %}
 <div class="story_page">
-<article data-story-url="{{ story['slug'] }}" data-story-content-id= "{{ story['story-content-id'] }}" data-story-version-id="{{ story['story-version-id'] }}" class=" story-page story-view">
+<article  class=" story-page story-view"
+          data-story-url="{{ story.canonical_url }}"
+          data-story-content-id="{{ story['story-content-id'] }}"
+          data-story-version-id="{{ story['story-version-id'] }}"
+          data-story-headline="{{ story['headline'] }}"
+          data-loader="story">
+
   <div class="article_header">
     {% include '/story/article_header' with {'story' : story } %}
   </div>

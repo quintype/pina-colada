@@ -5,7 +5,8 @@ global.app = {
   video: require("./video"),
   quintypeLoadMore : require("./load_more"),
   mapOverlay : require("./map_overlay"),
-  slickSlideShow : require("./slick_slideShow_settings")
+  slickSlideShow : require("./slick_slideShow_settings"),
+  analytics: require("./analytics")
 };
 
 $(document).ready(function() {
@@ -13,5 +14,4 @@ $(document).ready(function() {
   app.video.setupYoutubeVideo();
   app.video.loadYoutubeLibrary();
   app.mapOverlay.locationOverlay();
-  app.initQtReady();
 });

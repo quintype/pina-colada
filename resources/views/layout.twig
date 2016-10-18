@@ -4,6 +4,15 @@
   {{ meta.display([], true)|raw }}
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <link rel="stylesheet" type="text/css" href="{{ assetPath("application.css") }}"/>
+
+  <!-- Qlitics Snippet -->
+  <script>
+    window.qlitics=window.qlitics||function(){(qlitics.q=qlitics.q||[]).push(arguments);};
+    qlitics('init');
+    qlitics('track', 'page-view', {'page-type': '{{page["type"]}}' });
+  </script>
+  <script async src='/qlitics.js'></script>
+  <!-- End Qlitics Snippet -->
 </head>
 <body>
   <script type="text/javascript">var qtReady = qtReady || [];</script>
