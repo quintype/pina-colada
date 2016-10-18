@@ -19,6 +19,7 @@ class QuintypeController extends Controller
 
   public function toView($args) {
     return array_merge([
+      "site_url" => url('/'),
       "config" => $this->config,
       "menuItems" => $this->client->menuItems($this->config["layout"]["menu"]),
       "loadMoreFields" => config("quintype.loadMoreFields")

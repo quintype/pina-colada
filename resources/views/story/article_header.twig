@@ -5,7 +5,7 @@
   {{ storySection['name'] }}
 </h4>
 <div class="article_header-share">
-  {% include 'story/share' with {'url': story['slug'] ,'headline': story['headline'] } %}
+  {% include 'story/share' with {'story': story } %}
 </div>
 <div class="article_header-hero-image">
   <figure>

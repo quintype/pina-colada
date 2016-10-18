@@ -1,22 +1,43 @@
 <div class="social-links">
-  <a class="fb-xfbml-parse-ignore facebook social-share" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" data-social-media-type="facebook" data-social-media-share-url="{{ url }}" data-mobile-iframe="true">
+  <a  class="fb-xfbml-parse-ignore facebook social-share"
+      target="_blank"
+      href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}/{{ story['slug'] }}&amp;t={{ story['summary'] }}"
+      data-service="facebook"
+      data-social-media-type="facebook"
+      data-social-media-share-url="{{ story['slug'] }}"
+      data-mobile-iframe="true">
     {% include "story/social_icons/facebook_svg_icon" %}
   </a>
-  {% set articleHeadline = headline|trim %}
-  <a class="twitter social-share" target="_blank" data-social-media-type="twitter"
-     href="https://twitter.com/intent/tweet?url={{ url }}&text={{ articleHeadline|url_encode  }}" data-social-media-share-url="{{ url }}">
+  <a  class="twitter social-share"
+      target="_blank"
+      href="https://twitter.com/intent/tweet?url={{ site_url }}/{{story['slug']}}&amp;text={{ story['headline'] | trim | url_encode  }}"
+      data-service="twitter"
+      data-social-media-type="twitter"
+      data-social-media-share-url="{{ story['slug'] }}">
      {% include "story/social_icons/twitter_svg_icon" %}
   </a>
-  <a class="gplus social-share" target="_blank" data-social-media-type="google"
-     href="https://plus.google.com/share?url={{ url }}" data-social-media-share-url="{{ url }}">
+  <a  class="gplus social-share"
+      target="_blank"
+      href="https://plus.google.com/share?url={{ story['slug'] }}"
+      data-service="google"
+      data-social-media-type="google"
+      data-social-media-share-url="{{ story['slug'] }}">
      {% include "story/social_icons/gplus_svg_icon" %}
   </a>
-  <a class="linkedin social-share" target="_blank" data-social-media-type="linkedin"
-     href="https://www.linkedin.com/shareArticle?mini=true&url={{ url }}" data-social-media-share-url="{{ url }}">
+  <a  class="linkedin social-share"
+      target="_blank"
+      href="https://www.linkedin.com/shareArticle?mini=true&url={{ story['slug'] }}"
+      data-service="linkedin"
+      data-social-media-type="linkedin"
+      data-social-media-share-url="{{ story['slug'] }}">
      {% include "story/social_icons/linkedin_svg_icon" %}
   </a>
-  <a class="whatsapp social-share" target="_blank" data-social-media-type="whatsapp"
-     href="whatsapp://send?text={{ url }}" data-social-media-share-url="{{ url }}">
+  <a  class="whatsapp social-share"
+      target="_blank"
+      href="whatsapp://send?text={{ story['slug'] }}"
+      data-service="whatsapp"
+      data-social-media-type="whatsapp"
+      data-social-media-share-url="{{ story['slug'] }}">
      {% include "story/social_icons/whatsapp_svg_icon" %}
   </a>
 </div>

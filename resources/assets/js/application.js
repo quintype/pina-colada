@@ -18,3 +18,7 @@ $(document).ready(function() {
   app.video.loadYoutubeLibrary();
   app.mapOverlay.locationOverlay();
 });
+
+$('a.social-share').click(function(){
+  global.app.analytics.trackStoryShare(event);
+});
