@@ -22,13 +22,18 @@ class HomeController extends QuintypeController{
       $setSeo = $this->seo->home($page["type"]);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("home/index", $this->toView([
+      return response(view("home/index", $this->toView([
           "stories" => $top_stories,
           "stacks" => $stacks,
           "page" => $page,
           "meta" => $this->meta
         ])
-      );
+      ))->withHeaders([
+          "Cache-Control" => "public,max-age=0",
+          "Surrogate-Control" => "public,max-age=30,stale-while-revalidate=120,stale-if-error=3600",
+          "Surrogate-Key" => $this->getKeys(["top/home"], $this->client->getBulkResponse("top_stories")),
+          "Vary" => "Accept"
+      ]);
     }
 
     public function story($category, $y, $m, $d, $slug) {
@@ -36,19 +41,27 @@ class HomeController extends QuintypeController{
       $relatedStories = $this->client->relatedStories($story["id"]);//Get all the stories related to this story.
       $comments = $this->client->storyComments($story["id"]);//Get all the comments for this story.
 
+      $this->client->addBulkRequest("top_stories", "top", ["fields" => config("quintype.fields"), "limit" => 8]);//Default stack.
+      $this->client->executeBulk();//Use the bulk request and make the API call.
+
       $page = ["type" => "story"];
       //Set SEO meta tags.
       $setSeo = $this->seo->story($page["type"], $story);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("story/index", $this->toView([
+      return response(view("story/index", $this->toView([
           "story" => $story,
           "relatedStories" => $relatedStories,
           "comments" => $comments,
           "page" => $page,
           "meta" => $this->meta
         ])
-      );
+      ))->withHeaders([
+          "Cache-Control" => "public,max-age=0",
+          "Surrogate-Control" => "public,max-age=30,stale-while-revalidate=120,stale-if-error=3600",
+          "Surrogate-Key" => $this->getKeys(["related/stories"], array_merge([$story], $this->client->getBulkResponse("top_stories"))),
+          "Vary" => "Accept"
+      ]);
     }
 
     public function section($section) {
