@@ -1,5 +1,5 @@
 function handleYoutubePlayerStateChange(event) {
-  //analytics.trackYouTubeStoryElement(event);
+  global.app.analytics.trackYouTubeStoryElement(event);
 }
 
 function loadEagerPlayers($storyEl) {
