@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8bb1cc2308cc8b5fcd6d00e80dd6954f",
-    "content-hash": "379ba79cfa61fcd4b39a7c75e90f1d26",
+    "hash": "919ae16c7e42a76f21a1d5c487d406bd",
+    "content-hash": "22c78e3c9580215c9e77027cec775e04",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -609,20 +609,20 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.28",
+            "version": "1.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a9663643ff2d16d7f66ed1e0d3212c5491bc9044"
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a9663643ff2d16d7f66ed1e0d3212c5491bc9044",
-                "reference": "a9663643ff2d16d7f66ed1e0d3212c5491bc9044",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.5.9"
             },
             "conflict": {
                 "league/flysystem-sftp": "<1.0.6"
@@ -688,7 +688,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-07 12:20:37"
+            "time": "2016-10-19 20:38:46"
         },
         {
             "name": "monolog/monolog",
@@ -1129,16 +1129,16 @@
         },
         {
             "name": "quintype/api",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/quintype/quintype-api-php.git",
-                "reference": "a48086367aeff1bc5a0feeda044a84da8f836e38"
+                "reference": "97fa840c2bd4412be4d5d37428500154a723cb9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/a48086367aeff1bc5a0feeda044a84da8f836e38",
-                "reference": "a48086367aeff1bc5a0feeda044a84da8f836e38",
+                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/97fa840c2bd4412be4d5d37428500154a723cb9d",
+                "reference": "97fa840c2bd4412be4d5d37428500154a723cb9d",
                 "shasum": ""
             },
             "require": {
@@ -1151,7 +1151,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-10-14 07:20:45"
+            "time": "2016-10-21 09:36:37"
         },
         {
             "name": "quintype/meta",

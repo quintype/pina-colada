@@ -27,6 +27,8 @@ Route::get('/preview/story', 'PreviewController@story');
 
 Route::get('/section/{section}', 'HomeController@section');
 
+Route::get('/section/{section}/{subSection}', 'HomeController@section');
+
 Route::get('/{category}/{y}/{m}/{d}/{slug}', 'HomeController@story');
 
 Route::get('/author/{authorId}', 'HomeController@author');

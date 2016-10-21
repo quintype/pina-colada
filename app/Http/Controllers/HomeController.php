@@ -64,7 +64,7 @@ class HomeController extends QuintypeController{
       ]);
     }
 
-    public function section($section) {
+    public function section1($section) {
       $sections = $this->config["sections"];//Get all sections.
       $cur_section_index = array_search($section, array_column($sections, "slug"), true);//Get the index of the selected section.
       if($cur_section_index !== false){
@@ -93,6 +93,58 @@ class HomeController extends QuintypeController{
       } else {
         return "404 Page";
       }
+    }
+
+    public function section($section, $subSection = ''){
+      $sections = $this->config["sections"];//Get all sections.
+
+      $cur_section_index = array_search($section, array_column($sections, "slug"), true);//Get the index of given section.
+      if($cur_section_index !== false){//Given section found.
+        $cur_section =  $sections[$cur_section_index];//Get details of given section.
+      } else {//Given section not found.
+        return "404 Page";
+      }
+
+      if($subSection == ''){//If there is no sub section.
+        return $this->getSectionData($cur_section);
+      } else {//If there is a sub section.
+        $cur_sub_section_index = array_search($subSection, array_column($sections, "slug"), true);//Get the index of given sub section.
+        if($cur_sub_section_index !== false){//Given sub section found.
+          $cur_sub_section =  $sections[$cur_sub_section_index];//Get details of given sub section.
+          if($cur_section['id'] == $cur_sub_section['parent-id']){//Make sure the sub section belongs the given parent section.
+            return $this->getSectionData($cur_sub_section);
+          } else {
+            return "404 Page";
+          }
+        } else {//Given sub section not found.
+          return "404 Page";
+        }
+      }
+
+    }
+
+    public function getSectionData($section) {
+      $params = [
+          "story-group" => "top",
+          "section-id" => $section["id"],
+          "limit" => 8,
+          "fields" => config("quintype.fields")
+      ];
+      $stories = $this->client->stories($params);
+
+      $page = ["type" => "section"];
+      //Set SEO meta tags.
+      $setSeo = $this->seo->section($page["type"], $section["name"], $section["id"]);
+      $this->meta->set($setSeo->prepareTags());
+
+      return view("section/index", $this->toView([
+          "stories" => $stories,
+          "sectionName" => $section["name"],
+          "sectionId" => $section["id"],
+          "page" => $page,
+          "meta" => $this->meta
+        ])
+      );
     }
 
     public function author($authorId) {
