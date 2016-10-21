@@ -1,0 +1,10 @@
+<ul>
+  {% for menuItem in client.levelTwoMenuItems(config["layout"]["menu"]) %}
+    <li><a href="{{menuItem.url()}}">{{menuItem.title()}}</a></li>
+    <ul>
+      {% for subMenu in client.menuItems(menuItem['sub-menus']) %}
+        <li><a href="{{subMenu.url()}}">{{subMenu.title()}}</a></li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</ul>

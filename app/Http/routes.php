@@ -33,6 +33,6 @@ Route::get('/{category}/{y}/{m}/{d}/{slug}', 'HomeController@story');
 
 Route::get('/author/{authorId}', 'HomeController@author');
 
-Route::get('/tag/{tag}', 'HomeController@tag');
+Route::get('/tag', 'HomeController@tag');
 
-Route::get('/search/{searchKey}', 'HomeController@search');
+Route::get('/search', 'HomeController@search');

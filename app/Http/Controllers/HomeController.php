@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Log;
 use App\Http\Controllers\QuintypeController;
-
+use Illuminate\Http\Request;
 use Quintype\Api\Bulk;
 use Quintype\Api\StoriesRequest;
 
@@ -133,7 +133,8 @@ class HomeController extends QuintypeController{
       );
     }
 
-    public function tag($tag){
+    public function tag(Request $request){
+      $tag = $request->tag;
       $params =[
             "story-group" => "top",
             "tag" => $tag,
@@ -155,7 +156,8 @@ class HomeController extends QuintypeController{
       );
     }
 
-    public function search($searchKey){
+    public function search(Request $request){
+      $searchKey = $request->q;
       $params =[
             "q" => $searchKey,
             "limit" => 8
