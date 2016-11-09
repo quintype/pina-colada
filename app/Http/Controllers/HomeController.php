@@ -10,9 +10,15 @@ use Quintype\Api\StoriesRequest;
 
 class HomeController extends QuintypeController{
 
+    public function __construct(){
+      parent::__construct();
+      $this->fields = "id,headline,slug,url,hero-image-s3-key,hero-image-metadata,first-published-at,last-published-at,alternative,published-at,author-name,author-id,sections,story-template,summary,metadata,hero-image-attribution,cards,subheadline,authors";
+      $this->loadMoreFields = "sections,hero-image-s3-key,headline,author-name,summary,first-published-at,slug";
+    }
+
     public function index(){
-      $this->client->addBulkRequest("top_stories", "top", ["fields" => config("quintype.fields"), "limit" => 8]);//Default stack.
-      $this->client->buildStacksRequest($this->config["layout"]["stacks"], config("quintype.fields"));//Build all stack requests dynamically.
+      $this->client->addBulkRequest("top_stories", "top", ["fields" => $this->fields, "limit" => 8]);//Default stack.
+      $this->client->buildStacksRequest($this->config["layout"]["stacks"], $this->fields);//Build all stack requests dynamically.
       $this->client->executeBulk();//Use the bulk request and make the API call.
       $top_stories = $this->client->getBulkResponse("top_stories");//Get just the default stack stories.
       $stacks = $this->client->buildStacks($this->config["layout"]["stacks"]);//Get all stacks stories.
@@ -41,7 +47,7 @@ class HomeController extends QuintypeController{
       $relatedStories = $this->client->relatedStories($story["id"]);//Get all the stories related to this story.
       $comments = $this->client->storyComments($story["id"]);//Get all the comments for this story.
 
-      $this->client->addBulkRequest("top_stories", "top", ["fields" => config("quintype.fields"), "limit" => 8]);//Default stack.
+      $this->client->addBulkRequest("top_stories", "top", ["fields" => $this->fields, "limit" => 8]);//Default stack.
       $this->client->executeBulk();//Use the bulk request and make the API call.
 
       $page = ["type" => "story"];
@@ -97,7 +103,7 @@ class HomeController extends QuintypeController{
           "story-group" => "top",
           "section-id" => $section["id"],
           "limit" => 8,
-          "fields" => config("quintype.fields")
+          "fields" => $this->fields
       ];
       $stories = $this->client->stories($params);
 
@@ -122,7 +128,7 @@ class HomeController extends QuintypeController{
             "author-id" => $authorId,
             "sort" => "latest-published",
             "limit" => 4,
-            "fields" => config("quintype.fields")
+            "fields" => $this->fields
         ];
       $authorStories = $this->client->search($params);
 
