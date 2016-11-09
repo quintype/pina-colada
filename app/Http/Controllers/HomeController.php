@@ -77,7 +77,7 @@ class HomeController extends QuintypeController{
       if($cur_section_index !== false){//Given section found.
         $cur_section =  $sections[$cur_section_index];//Get details of given section.
       } else {//Given section not found.
-        return "404 Page";
+        return view("errors/404", $this->toView([]));
       }
 
       if($subSection == ''){//If there is no sub section.
@@ -89,10 +89,10 @@ class HomeController extends QuintypeController{
           if($cur_section['id'] == $cur_sub_section['parent-id']){//Make sure the sub section belongs the given parent section.
             return $this->getSectionData($cur_sub_section);
           } else {
-            return "404 Page";
+            return view("errors/404", $this->toView([]));
           }
         } else {//Given sub section not found.
-          return "404 Page";
+          return view("errors/404", $this->toView([]));
         }
       }
 
@@ -153,13 +153,17 @@ class HomeController extends QuintypeController{
       $setSeo = $this->seo->tag($tag);
       $this->meta->set($setSeo->prepareTags());
 
-      return view("tag/index", $this->toView([
-          "stories" => $pickedStories,
-          "sectionName" => $tag,
-          "page" => $page,
-          "meta" => $this->meta
-        ])
-      );
+      if(sizeof($pickedStories) < 1){
+        return view("errors/no_results", $this->toView([]));
+      } else {
+        return view("tag/index", $this->toView([
+            "stories" => $pickedStories,
+            "sectionName" => $tag,
+            "page" => $page,
+            "meta" => $this->meta
+          ])
+        );
+      }
     }
 
     public function search(Request $request){
@@ -174,13 +178,16 @@ class HomeController extends QuintypeController{
       //Set SEO meta tags.
       $setSeo = $this->seo->search($searchKey);
       $this->meta->set($setSeo->prepareTags());
-
-      return view("search/index", $this->toView([
-          "stories" => $pickedStories,
-          "sectionName" => $searchKey,
-          "page" => $page,
-          "meta" => $this->meta
-        ])
-      );
+      if(sizeof($pickedStories) < 1){
+        return view("errors/no_results", $this->toView([]));
+      } else {
+        return view("search/index", $this->toView([
+            "stories" => $pickedStories,
+            "sectionName" => $searchKey,
+            "page" => $page,
+            "meta" => $this->meta
+          ])
+        );
+      }
     }
 }
