@@ -1,10 +1,14 @@
 <h1>Showing results for '{{ searchKey }}'</h1>
 <div class="stories-list">
-  {% include "shared/article_list"  %}
-  {% include "shared/load_more_stories" %}
+  <div class="load-more-results">
+    {% include "shared/article_list"  %}
+  </div>
+  {% if showLoadMore %}
+    {% include "shared/load_more_stories" %}
+  {% endif %}
 </div>
 <script type="text/javascript">
   var storyTemplate = "list_articles" ;
   var api ='/api/v1/search?fields={{ loadMoreFields }}&q={{ searchKey }}';
-  qtReady.push(function() { app.quintypeLoadMore($(".stories-list"), {limit: 7, offset: 8}, api, storyTemplate); });
+  qtReady.push(function() { app.quintypeLoadMore($(".stories-list"), {limit: 7, offset: {{storyCount}}}, api, storyTemplate); });
 </script>

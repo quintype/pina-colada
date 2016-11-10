@@ -74,10 +74,11 @@ class HomeController extends QuintypeController{
       $allSections = $this->config["sections"];
       $section = $this->client->getSectionDetails($sectionName, $allSections);
       if($section){
+        $storyCount = 8;
         $params = [
             "story-group" => "top",
             "section-id" => $section["id"],
-            "limit" => 8,
+            "limit" => $storyCount + 1,
             "fields" => $this->fields
         ];
         $stories = $this->client->stories($params);
@@ -88,11 +89,14 @@ class HomeController extends QuintypeController{
         $this->meta->set($setSeo->prepareTags());
 
         return view("section/index", $this->toView([
-            "stories" => $stories,
+            "stories" => array_slice($stories, 0, $storyCount),
             "sectionName" => $section["name"],
             "sectionId" => $section["id"],
             "page" => $page,
-            "meta" => $this->meta
+            "meta" => $this->meta,
+            "loadMoreFields" => $this->loadMoreFields,
+            "storyCount" => $storyCount,
+            "showLoadMore" => sizeof($stories) > $storyCount
           ])
         );
       } else {
@@ -119,10 +123,11 @@ class HomeController extends QuintypeController{
 
     public function tag(Request $request){
       $tag = $request->tag;
+      $storyCount = 8;
       $params =[
             "story-group" => "top",
             "tag" => $tag,
-            "limit" => 8
+            "limit" => $storyCount + 1
         ];
       $pickedStories = $this->client->stories($params);
 
@@ -135,11 +140,13 @@ class HomeController extends QuintypeController{
         return view("errors/no_results", $this->toView([]));
       } else {
         return view("tag/index", $this->toView([
-            "stories" => $pickedStories,
+            "stories" => array_slice($pickedStories, 0, $storyCount),
             "tag" => $tag,
             "page" => $page,
             "meta" => $this->meta,
-            "loadMoreFields" => $this->loadMoreFields
+            "loadMoreFields" => $this->loadMoreFields,
+            "storyCount" => $storyCount,
+            "showLoadMore" => sizeof($pickedStories) > $storyCount
           ])
         );
       }
@@ -147,9 +154,10 @@ class HomeController extends QuintypeController{
 
     public function search(Request $request){
       $searchKey = $request->q;
+      $storyCount = 8;
       $params =[
             "q" => $searchKey,
-            "limit" => 8
+            "limit" => $storyCount + 1
         ];
       $pickedStories = $this->client->search($params);
 
@@ -161,11 +169,13 @@ class HomeController extends QuintypeController{
         return view("errors/no_results", $this->toView([]));
       } else {
         return view("search/index", $this->toView([
-            "stories" => $pickedStories,
+            "stories" => array_slice($pickedStories, 0, $storyCount),
             "searchKey" => $searchKey,
             "page" => $page,
             "meta" => $this->meta,
-            "loadMoreFields" => $this->loadMoreFields
+            "loadMoreFields" => $this->loadMoreFields,
+            "storyCount" => $storyCount,
+            "showLoadMore" => sizeof($pickedStories) > $storyCount
           ])
         );
       }
