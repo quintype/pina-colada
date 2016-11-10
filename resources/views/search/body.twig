@@ -10,5 +10,5 @@
 <script type="text/javascript">
   var storyTemplate = "list_articles" ;
   var api ='/api/v1/search?fields={{ loadMoreFields }}&q={{ searchKey }}';
-  qtReady.push(function() { app.quintypeLoadMore($(".sectionpage-articles"), {limit: 7}, 8 , api, storyTemplate); });
+  qtReady.push(function() { app.quintypeLoadMore($(".sectionpage-articles"), {limit: 7, offset: 8}, api, storyTemplate); });
 </script>
