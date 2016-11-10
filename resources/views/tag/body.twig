@@ -1,14 +1,10 @@
 <h1>Showing results for '{{ tag }}'</h1>
-<div class="sectionpage-articles ">
-  <div class="load-more-results list-article">
-    {% include "/shared/article_list"  %}
-  </div>
-  <div class="load-more-button load-article-container">
-    {% include "shared/load_more_stories" %}
-  </div>
+<div class="stories-list">
+  {% include "shared/article_list"  %}
+  {% include "shared/load_more_stories" %}
 </div>
 <script type="text/javascript">
   var storyTemplate = "list_articles" ;
   var api ='/api/v1/stories?fields={{ loadMoreFields }}&tag={{ tag }}';
-  qtReady.push(function() { app.quintypeLoadMore($(".sectionpage-articles"), {limit: 7, offset: 8}, api, storyTemplate); });
+  qtReady.push(function() { app.quintypeLoadMore($(".stories-list"), {limit: 7, offset: 8}, api, storyTemplate); });
 </script>
