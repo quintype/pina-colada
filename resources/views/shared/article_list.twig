@@ -1,4 +1,4 @@
-{% for story in stories | slice(0, loadCount) %}
+{% for story in stories %}
   <a href="/{{ story['slug'] }}">
     <div class="storyWrapper">
       <h3>{{ story["headline"] }}</h3>
