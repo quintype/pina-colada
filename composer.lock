@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f514a45cc35b3927b2df7e7a8344a810",
-    "content-hash": "0bba13a8850aa60d959e63b80e5193d3",
+    "hash": "1bbebeb06fe160c2e16a44a8140e5c63",
+    "content-hash": "afe426f8d2ebc9aa88f4eddb56f7841a",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1129,12 +1129,17 @@
         },
         {
             "name": "quintype/api",
-            "version": "dev-master",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quintype/quintype-api-php.git",
+                "reference": "1949d0e81f114d055d737642f2e7b3ed65d4b734"
+            },
             "dist": {
-                "type": "path",
-                "url": "../quintype-api-php",
-                "reference": "1bbda5423be087ecd9ff292d10491456479dfa7b",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/quintype/quintype-api-php/zipball/1949d0e81f114d055d737642f2e7b3ed65d4b734",
+                "reference": "1949d0e81f114d055d737642f2e7b3ed65d4b734",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2"
@@ -1144,7 +1149,9 @@
                 "psr-0": {
                     "Quintype": "src"
                 }
-            }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2016-11-10 14:37:30"
         },
         {
             "name": "quintype/meta",
@@ -3602,9 +3609,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "quintype/api": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
