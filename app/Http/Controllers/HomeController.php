@@ -70,56 +70,34 @@ class HomeController extends QuintypeController{
       ]);
     }
 
-    public function section($section, $subSection = ''){
-      $sections = $this->config["sections"];//Get all sections.
+    public function section($sectionName){
+      $allSections = $this->config["sections"];
+      $section = $this->client->getSectionDetails($sectionName, $allSections);
+      if($section){
+        $params = [
+            "story-group" => "top",
+            "section-id" => $section["id"],
+            "limit" => 8,
+            "fields" => $this->fields
+        ];
+        $stories = $this->client->stories($params);
 
-      $cur_section_index = array_search($section, array_column($sections, "slug"), true);//Get the index of given section.
-      if($cur_section_index !== false){//Given section found.
-        $cur_section =  $sections[$cur_section_index];//Get details of given section.
-      } else {//Given section not found.
+        $page = ["type" => "section"];
+        //Set SEO meta tags.
+        $setSeo = $this->seo->section($page["type"], $section["name"], $section["id"]);
+        $this->meta->set($setSeo->prepareTags());
+
+        return view("section/index", $this->toView([
+            "stories" => $stories,
+            "sectionName" => $section["name"],
+            "sectionId" => $section["id"],
+            "page" => $page,
+            "meta" => $this->meta
+          ])
+        );
+      } else {
         return view("errors/404", $this->toView([]));
       }
-
-      if($subSection == ''){//If there is no sub section.
-        return $this->getSectionData($cur_section);
-      } else {//If there is a sub section.
-        $cur_sub_section_index = array_search($subSection, array_column($sections, "slug"), true);//Get the index of given sub section.
-        if($cur_sub_section_index !== false){//Given sub section found.
-          $cur_sub_section =  $sections[$cur_sub_section_index];//Get details of given sub section.
-          if($cur_section['id'] == $cur_sub_section['parent-id']){//Make sure the sub section belongs the given parent section.
-            return $this->getSectionData($cur_sub_section);
-          } else {
-            return view("errors/404", $this->toView([]));
-          }
-        } else {//Given sub section not found.
-          return view("errors/404", $this->toView([]));
-        }
-      }
-
-    }
-
-    public function getSectionData($section) {
-      $params = [
-          "story-group" => "top",
-          "section-id" => $section["id"],
-          "limit" => 8,
-          "fields" => $this->fields
-      ];
-      $stories = $this->client->stories($params);
-
-      $page = ["type" => "section"];
-      //Set SEO meta tags.
-      $setSeo = $this->seo->section($page["type"], $section["name"], $section["id"]);
-      $this->meta->set($setSeo->prepareTags());
-
-      return view("section/index", $this->toView([
-          "stories" => $stories,
-          "sectionName" => $section["name"],
-          "sectionId" => $section["id"],
-          "page" => $page,
-          "meta" => $this->meta
-        ])
-      );
     }
 
     public function author($authorId) {
@@ -158,9 +136,10 @@ class HomeController extends QuintypeController{
       } else {
         return view("tag/index", $this->toView([
             "stories" => $pickedStories,
-            "sectionName" => $tag,
+            "tag" => $tag,
             "page" => $page,
-            "meta" => $this->meta
+            "meta" => $this->meta,
+            "loadMoreFields" => $this->loadMoreFields
           ])
         );
       }
@@ -183,9 +162,10 @@ class HomeController extends QuintypeController{
       } else {
         return view("search/index", $this->toView([
             "stories" => $pickedStories,
-            "sectionName" => $searchKey,
+            "searchKey" => $searchKey,
             "page" => $page,
-            "meta" => $this->meta
+            "meta" => $this->meta,
+            "loadMoreFields" => $this->loadMoreFields
           ])
         );
       }

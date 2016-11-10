@@ -20,9 +20,7 @@ class QuintypeController extends Controller
     return array_merge([
       "site_url" => url('/'),
       "config" => $this->config,
-      "client"=>$this->client,
       "menuItems" => $this->client->menuItems($this->config["layout"]["menu"]),
-      "loadMoreFields" => config("quintype.loadMoreFields")
     ], $args);
   }
 
