@@ -9,7 +9,7 @@
         "laravel/framework": "5.2.*",
         "guzzlehttp/guzzle": "~6.0",
         "rcrowe/twigbridge": "^0.9.2",
-        "quintype/api": "1.1.0",
+        "quintype/api": "1.2.0",
         "quintype/meta": "2.0.0",
         "quintype/seo": "1.0.0"
     },
