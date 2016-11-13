@@ -65,7 +65,7 @@ class HomeController extends QuintypeController{
       ))->withHeaders([
           "Cache-Control" => "public,max-age=0",
           "Surrogate-Control" => "public,max-age=30,stale-while-revalidate=120,stale-if-error=3600",
-          "Surrogate-Key" => $this->client->getKeys(["related/stories"], array_merge([$story], $this->client->getBulkResponse("top_stories")), $this->config["publisher-id"]),
+          "Surrogate-Key" => $this->client->getKeys(["related/stories"], array_merge([$story], $relatedStories), $this->config["publisher-id"]),
           "Vary" => "Accept"
       ]);
     }
