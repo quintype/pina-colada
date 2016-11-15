@@ -70,9 +70,9 @@ class HomeController extends QuintypeController{
       ]);
     }
 
-    public function section($sectionName){
+    public function section($sectionSlug){
       $allSections = $this->config["sections"];
-      $section = $this->client->getSectionDetails($sectionName, $allSections);
+      $section = $this->client->getSectionDetails($sectionSlug, $allSections);
       if($section){
         $storyCount = 8;
         $params = [
