@@ -1,6 +1,9 @@
 <?php
 // These routes are localhost ONLY.
 Route::get('/qlitics.js', "ProxyController@proxyGet");
+Route::get('/login', "ProxyController@proxyGet");
+Route::get('/auth', "ProxyController@proxyGet");
+Route::get('/auth.callback', "ProxyController@proxyGet");
 Route::get('/api/{route}', "ProxyController@proxyGet")->where('route', '.*');
 Route::post('/api/{route}', "ProxyController@proxyPost")->where('route', '.*');
 
