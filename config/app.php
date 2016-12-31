@@ -206,7 +206,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Api' => Quintype\Api\Api::class,
         'Meta' => Quintype\Meta\Meta::class,
-        'Seo' => Quintype\Seo\Seo::class
+        'Seo' => Quintype\Seo\Seo::class,
+        'Caching' => Quintype\Caching\Caching::class
     ],
 
 ];

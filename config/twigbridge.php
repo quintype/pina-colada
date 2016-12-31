@@ -180,7 +180,8 @@ return [
             'last',
             'assetPath',
             'focusedImageUrl',
-            'base64_decode'
+            'base64_decode',
+            'menuBase'
         ],
 
         /*

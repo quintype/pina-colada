@@ -4,31 +4,39 @@ var Twig = require("twig");
 var FocusedImage = require("quintype-js").FocusedImage;
 
 global.transformTemplates = function(x) {
-  return _.extend(x, {
-    id: x.id.replace(/resources\/views\//, "").replace(/.twig/, ''),
-    path: x.path.replace(/resources\/views\//, "").replace(/.twig/, '')
-  })
+    return _.extend(x, {
+        id: x.id.replace(/resources\/views\//, "").replace(/.twig/, ''),
+        path: x.path.replace(/resources\/views\//, "").replace(/.twig/, '')
+    })
 };
 
 Twig.extendFunction("focusedImageUrl", function(slug, aspectRatio, metadata, options) {
-  var cdn = global.qtConfig["image-cdn"];
-  var image = new FocusedImage(slug, metadata);
-  return cdn + "/" + image.path(aspectRatio, options);
+    var cdn = global.qtConfig["image-cdn"];
+    var image = new FocusedImage(slug, metadata);
+    return cdn + "/" + image.path(aspectRatio, options);
 });
 
 Twig.extend(function(Twig) {
-  var importFile = Twig.Template.prototype.importFile;
-  Twig.Template.prototype.importFile = function(path) {
-    var cachedTemplate = Twig.Templates.registry[path] || Twig.Templates.registry["/" + path];
-    if(cachedTemplate)
-      return cachedTemplate;
-    if(console) console.warn("Unable to find template: ", path);
-    importFile.call(this, path);
-  }
+    var importFile = Twig.Template.prototype.importFile;
+    Twig.Template.prototype.importFile = function(path) {
+        var cachedTemplate = Twig.Templates.registry[path] || Twig.Templates.registry["/" + path];
+        if (cachedTemplate)
+            return cachedTemplate;
+        if (console) console.warn("Unable to find template: ", path);
+        importFile.call(this, path);
+    }
 });
 
 Twig.extendFunction("base64_decode", function(string) {
-   return atob(string);
+    return atob(string);
+});
+
+Twig.extendFunction("menuBase", function(menuType) {
+    if (menuType == 'section') {
+        return '/section/';
+    } else {
+        return '';
+    }
 });
 
 require("../../../resources/views/author/body.twig");
@@ -85,9 +93,9 @@ require("../../../resources/views/tag/index.twig");
 
 
 var TEMPLATES = {
-  "home_body": require("../../../resources/views/home/body.twig"),
-  "story_body": require("../../../resources/views/story/body.twig"),
-  "list_articles": require("../../../resources/views/shared/article_list.twig")
+    "home_body": require("../../../resources/views/home/body.twig"),
+    "story_body": require("../../../resources/views/story/body.twig"),
+    "list_articles": require("../../../resources/views/shared/article_list.twig")
 };
 
 module.exports = TEMPLATES;
