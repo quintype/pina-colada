@@ -1,5 +1,6 @@
 global.$ = global.jQuery = require("jquery");
 require("jquery.marquee");
+require("slick");
 
 global.app = {
   initQtReady: require("./qt_ready"),
@@ -8,7 +9,7 @@ global.app = {
   video: require("./video"),
   quintypeLoadMore : require("./load_more"),
   mapOverlay : require("./map_overlay"),
-  slickSlideShow : require("./slick_slideShow_settings"),
+  slickSlideShow : require("./slick_slideshow_settings"),
   analytics: require("./analytics")
 };
 

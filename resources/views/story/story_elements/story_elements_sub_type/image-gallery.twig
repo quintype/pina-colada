@@ -1,1 +1,27 @@
-<h1>story element image-gallery </h1>
+{% if element['metadata']['type'] == 'slideshow' %}
+    <div class="js-slideshow-element">
+        {% for images in element['story-elements'] %}
+            <div>
+                <figure>
+                    <img srcset="{{focusedImageUrl(images['image-s3-key'], [16,9], images['image-metadata'], {w: 640})}}"/>
+                </figure>
+                <figcaption>{{ images['title'] }}</figcaption>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+  <div class="story-element-{{dataElement['subtype']}}">
+    <ul>
+       {% for galleryImage in element['story-elements'] %}
+           <li class="story-element-image-gallery__image">
+               <figure>
+                 <img src="{{focusedImageUrl(galleryImage['image-s3-key'], config['image-cdn'], [16,9], galleryImage['image-metadata'], {w: 260, q: 60, auto: 'format', fm: 'pjpg'})}}"/>
+               </figure>
+               <div class="story-element-image-gallery__caption">
+                  {{ galleryImage['title'] | raw }}
+              </div>
+          </li>
+       {% endfor %}
+    </ul>
+  </div>
+{% endif %}

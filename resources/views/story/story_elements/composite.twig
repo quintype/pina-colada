@@ -1,14 +1,1 @@
-{% if element['metadata']['type'] == 'slideshow' %}
-  {% set image_gallery_type ='slideshow' %}
-{% else %}
-  {% set image_gallery_type ='gallery' %}
-{% endif %}
-
-<div class="story-element-composite story-element-{{ image_gallery_type }} {{ image_gallery_type }}">
-  {% for images in element['story-elements'] %}
-      <figure>
-        <img srcset ="{{focusedImageUrl(images['image-s3-key'], [16,9], images['image-metadata'], {w: 640})}}"/>
-      </figure>
-      <figcaption>{{ images['title'] }}</figcaption>
-  {% endfor %}
-</div>
+{% include 'story/story_elements/story_elements_sub_type/'~element['subtype'] %}
