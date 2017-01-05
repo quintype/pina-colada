@@ -72,8 +72,10 @@ require("../../../resources/views/story/social_icons/twitter_svg_icon.twig");
 require("../../../resources/views/story/social_icons/whatsapp_svg_icon.twig");
 
 require("../../../resources/views/story/story_elements/composite.twig");
+require("../../../resources/views/story/story_elements/external-file.twig");
 require("../../../resources/views/story/story_elements/image.twig");
 require("../../../resources/views/story/story_elements/jsembed.twig");
+require("../../../resources/views/story/story_elements/polltype.twig");
 require("../../../resources/views/story/story_elements/references.twig");
 require("../../../resources/views/story/story_elements/soundcloud-audio.twig");
 require("../../../resources/views/story/story_elements/text.twig");
@@ -84,8 +86,12 @@ require("../../../resources/views/story/story_elements/story_elements_sub_type/b
 require("../../../resources/views/story/story_elements/story_elements_sub_type/blockquote.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/blurb.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/image-gallery.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/ingredients.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/jwplayer.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/playlist.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/q-and-a.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/quote.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/references.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/summary.twig");
 
 require("../../../resources/views/tag/body.twig");
