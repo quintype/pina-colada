@@ -4,7 +4,7 @@
   {{ meta.display([], true)|raw }}
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <link rel="stylesheet" type="text/css" href="{{ assetPath("application.css") }}"/>
-  
+
   <!-- Qlitics Snippet -->
   <script>
     window.qlitics=window.qlitics||function(){(qlitics.q=qlitics.q||[]).push(arguments);};
@@ -46,7 +46,8 @@
   </div>
   <script type="text/javascript">
     var qtConfig = {
-    "image-cdn": "{{config("quintype.image-cdn")}}"
+    "image-cdn": "{{config("quintype.image-cdn")}}",
+    "polltype-host": "{{config['polltype-host']}}"
     };
   </script>
   <script type="text/javascript" src="{{ assetPath("application.js") }}"></script>

@@ -32,6 +32,7 @@ class QuintypeController extends Controller
 
   public function toView($args) {
     return array_merge([
+      "config" => $this->config,
       "site_url" => url('/'),
       "client" => $this->client,
       "nestedMenuItems" => $this->client->prepareNestedMenu($this->config["layout"]["menu"]),

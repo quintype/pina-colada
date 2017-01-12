@@ -85,13 +85,14 @@ require("../../../resources/views/story/story_elements/youtube-video.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/bigfact.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/blockquote.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/blurb.twig");
-require("../../../resources/views/story/story_elements/story_elements_sub_type/image-gallery.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/gallery.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/ingredients.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/jwplayer.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/playlist.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/q-and-a.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/quote.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/references.twig");
+require("../../../resources/views/story/story_elements/story_elements_sub_type/slideshow.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/summary.twig");
 
 require("../../../resources/views/tag/body.twig");

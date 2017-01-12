@@ -1,1 +1,3 @@
-{{ base64_decode(element['embed-js'])|raw }}
+<div class="story-element-{{element['type']}}">
+  {{ base64_decode(element['embed-js']) | raw }}
+</div>

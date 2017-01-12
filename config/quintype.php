@@ -3,7 +3,7 @@
 return [
     "publisher-name" => "pina-colada",
     "asset-host" => "",
-    "api-host" => "http://sketches.quintype.com",
-    "image-cdn" => "//quintype-01.imgix.net",
+    "api-host" => "http://demo-rio-web.staging.quintype.io/",
+    "image-cdn" => "//qt-staging-01.imgix.net",
     "title" => "Pina Colada"
 ];
