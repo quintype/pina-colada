@@ -31,6 +31,25 @@ Twig.extendFunction("base64_decode", function(string) {
     return atob(string);
 });
 
+Twig.extendFunction("getPhotoStoryImages", function(story) {
+  var storyHeroImage = {
+      'image-s3-key' : story['hero-image-s3-key'] ,
+      'image-metadata' : story['hero-image-metadata'],
+      'title' :  story['title']
+    };
+
+    var storyImages = [storyHeroImage];
+
+    _.forEach(story['cards'], function(card) {
+      _.forEach(card['story-elements'], function (storyElement) {
+        if (storyElement['type'] === 'image') {
+          storyImages.push(storyElement);
+        }
+      });
+    });
+    return storyImages;
+});
+
 Twig.extendFunction("menuBase", function(menuType) {
     if (menuType == 'section') {
         return '/section/';
@@ -62,6 +81,7 @@ require("../../../resources/views/story/share.twig");
 require("../../../resources/views/story/story_card.twig");
 require("../../../resources/views/story/story_elements.twig");
 require("../../../resources/views/story/tags.twig");
+require("../../../resources/views/story/video_story_elements.twig");
 
 require("../../../resources/views/story/social_icons/facebook_svg_icon.twig");
 require("../../../resources/views/story/social_icons/gplus_svg_icon.twig");
@@ -94,6 +114,10 @@ require("../../../resources/views/story/story_elements/story_elements_sub_type/q
 require("../../../resources/views/story/story_elements/story_elements_sub_type/references.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/slideshow.twig");
 require("../../../resources/views/story/story_elements/story_elements_sub_type/summary.twig");
+
+require("../../../resources/views/story/templates/default.twig");
+require("../../../resources/views/story/templates/photo.twig");
+require("../../../resources/views/story/templates/video.twig");
 
 require("../../../resources/views/tag/body.twig");
 require("../../../resources/views/tag/index.twig");

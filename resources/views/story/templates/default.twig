@@ -1,0 +1,14 @@
+<div class="article_header">
+  {% include '/story/article_header' with {'story' : story } %}
+</div>
+<div class="article_body story-element-view"
+      data-story-content-id="{{ story['story-content-id'] }}"
+      data-story-version-id="{{ story['story-version-id'] }}">
+  {% for card in story['cards'] %}
+    {% include '/story/story_card' with {'storyCard': card } %}
+  {% endfor %}
+  <div id="youtube-iframe-api"></div>
+  <div class="tags">
+  {% include '/story/tags' with {'tags': story['tags'] } %}
+  </div>
+</div>

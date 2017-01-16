@@ -1,30 +1,24 @@
 {% set storySection = story['sections']|first %}
 <div class="story_page">
-<article  class=" story-page story-view"
-          data-story-url="{{ story.canonical_url }}"
-          data-story-content-id="{{ story['story-content-id'] }}"
-          data-story-version-id="{{ story['story-version-id'] }}"
-          data-story-headline="{{ story['headline'] }}"
-          data-loader="story">
-
-  <div class="article_header">
-    {% include '/story/article_header' with {'story' : story } %}
+  <article  class=" story-page story-view"
+            data-story-url="{{ story.canonical_url }}"
+            data-story-content-id="{{ story['story-content-id'] }}"
+            data-story-version-id="{{ story['story-version-id'] }}"
+            data-story-headline="{{ story['headline'] }}"
+            data-loader="story">
+   {% if story['story-template'] == 'photo' %}
+    {% include "/story/templates/photo" %}
+   {% elseif story['story-template'] == 'video' %}
+    {% include "/story/templates/video" %}
+   {% elseif story['story-template'] == 'recipe' %}
+    {% include "/story/templates/recipe" %}
+   {% else %}
+    {% include "story/templates/default" %}
+   {% endif %}
+  </article>
+  <div class="related-stories">
+    <h3>Related Stories</h3>
+    {% include '/story/related_stories' with {'story': relatedStories } %}
   </div>
-  <div  class="article_body story-element-view"
-        data-story-content-id="{{ story['story-content-id'] }}"
-        data-story-version-id="{{ story['story-version-id'] }}">
-    {% for card in story['cards'] %}
-      {% include '/story/story_card' with {'storyCard': card } %}
-    {% endfor %}
-    <div id="youtube-iframe-api"></div>
-    <div class="tags">
-    {% include '/story/tags' with {'tags': story['tags'] } %}
-    </div>
-    <div class="related-stories">
-      <h3>Related Stories</h3>
-      {% include '/story/related_stories' with {'story': relatedStories } %}
-    </div>
-    <div class="comments"></div>
-  </div>
-</article>
+  <div class="comments"></div>
 </div>

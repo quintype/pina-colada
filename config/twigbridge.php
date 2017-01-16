@@ -181,6 +181,7 @@ return [
             'assetPath',
             'focusedImageUrl',
             'base64_decode',
+            'getPhotoStoryImages',
             'menuBase'
         ],
 
