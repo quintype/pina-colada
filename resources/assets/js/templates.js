@@ -117,6 +117,7 @@ require("../../../resources/views/story/story_elements/story_elements_sub_type/s
 
 require("../../../resources/views/story/templates/default.twig");
 require("../../../resources/views/story/templates/photo.twig");
+require("../../../resources/views/story/templates/recipe.twig");
 require("../../../resources/views/story/templates/video.twig");
 
 require("../../../resources/views/tag/body.twig");
