@@ -1,4 +1,4 @@
-<h1 class="article_header-headline">
+<h1 itemprop="headline" class="article_header-headline">
   {{story['headline']}}
 </h1>
 <h4 class= "article_header-sections">
@@ -12,6 +12,9 @@
     <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
   </figure>
 </div>
-<div class="article_header-byline">
-  <a href="/author/{{ story['author-id'] }}"><h4>{{story['author-name']}}</h4></a>
+<div class="article_header-byline" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/author/{{ story['author-id'] }}"><h4 itemprop="name" >{{story['author-name']}}</h4></a>
+  <span class="textbottom__article--share" itemprop="datePublished">
+    <time>{% set timestamp = (story["first-published-at"]// 1000)|round(0, 'floor') %}{{ timestamp|date('M j, Y') }}</time>
+  </span>
 </div>
