@@ -9,7 +9,7 @@
                          <img class="author-image" src="{{focusedImageUrl(authorDetails['avatar-s3-key'],config['image-cdn'], [16,9], [], {w: 200})}}"/>
                     </div>
                     <div class="author-box">
-                        <p class="author-box__name">By {{authorDetails['name']}}</p>
+                        <p class="author-box__name">By {{story['author-name']}}</p>
                         <p class="author-box_detail">{{ (storyData['first-published-at'] // 1000)|date('M d, Y') }}</p>
                     </div>
                 </div>

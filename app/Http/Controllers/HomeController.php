@@ -38,9 +38,11 @@ class HomeController extends QuintypeController
     {
         $page = ['type' => 'story'];
         $story = $this->client->storyBySlug(['slug' => $slug]);
+        $sectionNames = $this->getSectionNames($story);
         $relatedStories = $this->client->relatedStories($story['id']);
         $storiesToCache = array_merge([$story], $relatedStories);
         $getRatingValues = $this->getAverageRating($story);
+        $authorDetails = $this->client->getAuthor($story['author-id']);
         //Set SEO meta tags.
         $setSeo = $this->seo->story($page['type'], $story);
         $this->meta->set($setSeo->prepareTags());
@@ -49,6 +51,8 @@ class HomeController extends QuintypeController
         'story' => $story,
         'relatedStories' => $relatedStories,
         'getRatingValues' => $getRatingValues,
+        'sectionNames' => $sectionNames,
+        'authorDetails' => $authorDetails,
         'page' => $page,
         'meta' => $this->meta,
       ])))->withHeaders($this->caching->buildCacheHeaders(array_merge($this->defaultCacheParams, ['storiesToCache' => $storiesToCache])));
@@ -189,4 +193,24 @@ class HomeController extends QuintypeController
         );
         }
     }
+
+    public function getSectionNames($story)
+    {
+        $sectionNameArray = array();
+        $sectionNameLastArray = array();
+          if ($story['story-template'] == 'recipe') {
+            foreach ($story['sections'] as $key => $section) {
+              array_push($sectionNameArray, $section['display-name']);
+            }
+            if (sizeof($story['sections']) == 1) {
+              $sectionNames = $sectionNameArray[0];
+            } elseif (sizeof($story['sections']) == 2) {
+              $sectionNames = implode(" and ", $sectionNameArray);
+            } else {
+              $sectionNameLastArray = array_pop($sectionNameArray);
+              $sectionNames = implode(", ", $sectionNameArray). " and ". $sectionNameLastArray;
+            }
+         return $sectionNames;
+        }
+     }
 }
