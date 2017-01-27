@@ -10,7 +10,8 @@ global.app = {
   quintypeLoadMore : require("./load_more"),
   mapOverlay : require("./map_overlay"),
   slickSlideShow : require("./slick_slideshow_settings"),
-  analytics: require("./analytics")
+  analytics: require("./analytics"),
+  members: require("./members")
 };
 
 $(document).ready(function() {
