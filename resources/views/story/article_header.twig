@@ -1,4 +1,4 @@
-<h1 class="article_header-headline">
+<h1 itemprop="headline" class="article_header-headline">
   {{story['headline']}}
 </h1>
 <h4 class= "article_header-sections">
@@ -8,10 +8,18 @@
   {% include 'story/share' with {'story': story } %}
 </div>
 <div class="article_header-hero-image">
-  <figure>
-    <img src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+  <figure itemtype="https://schema.org/ImageObject" itemscope="itemscope" itemprop="image">
+    <img itemprop="url" src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+    <span content="{{story['hero-image-metadata']['width']}}" itemprop="width">
+    <span content="{{story['hero-image-metadata']['height']}}" itemprop="height">
   </figure>
 </div>
 <div class="article_header-byline">
-  <a href="/author/{{ story['author-id'] }}"><h4>{{story['author-name']}}</h4></a>
+  <a href="/author/{{ story['author-id'] }}">
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person"><h4 itemprop="name" >{{story['author-name']}}</h4></span>
+  </a>
+  <span class="textbottom__article--share">
+    <time itemprop="datePublished" content="{{ ((story['first-published-at'] // 1000)|date('M dS Y, h.i A' ,'Asia/Kolkata'))| date(DATE_ISO8601) }}">{% set timestamp = (story["first-published-at"]// 1000)|round(0, 'floor') %}{{ timestamp|date('M j, Y') }}</time>
+    <time itemprop="dateModified" content="{{ ((story['last-published-at'] // 1000)|date('M dS Y, h.i A' ,'Asia/Kolkata'))| date(DATE_ISO8601) }}">
+  </span>
 </div>
