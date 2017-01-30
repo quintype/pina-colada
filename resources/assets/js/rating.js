@@ -4,7 +4,6 @@ function rating(storyId, user_rating) {
     ratedOnce(ratingValue);
   } else {
     $(".star").click(function(){
-      console.log(123);
       var rating = $(this).attr("data-rating");
       document.cookie = "user_rating = "+rating;
       ratedOnce(rating);
