@@ -8,8 +8,10 @@
   {% include 'story/share' with {'story': story } %}
 </div>
 <div class="article_header-hero-image">
-  <figure temtype="https://schema.org/ImageObject" itemscope="itemscope" itemprop="image">
+  <figure itemtype="https://schema.org/ImageObject" itemscope="itemscope" itemprop="image">
     <img itemprop="url" src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+    <span content="{{story['hero-image-metadata']['width']}}" itemprop="width">
+    <span content="{{story['hero-image-metadata']['height']}}" itemprop="height">
   </figure>
 </div>
 <div class="article_header-byline">
