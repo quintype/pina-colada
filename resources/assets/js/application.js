@@ -8,6 +8,7 @@ global.app = {
   startStoryPreview: require("./story_preview"),
   video: require("./video"),
   quintypeLoadMore : require("./load_more"),
+  rating : require("./rating"),
   mapOverlay : require("./map_overlay"),
   slickSlideShow : require("./slick_slideshow_settings"),
   analytics: require("./analytics"),
