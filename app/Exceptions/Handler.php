@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
             return response()->view('errors/404', ["config" => $client->config()], 404);
         }
         if ($e instanceof \GuzzleHttp\Exception\ClientException) {
-            return response()->view('errors/404', ["config" => $client->config()], 404);
+            return response()->json(["message"=>$e->getMessage()], $e->getCode());
         }
         return parent::render($request, $e);
     }
