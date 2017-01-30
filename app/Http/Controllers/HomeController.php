@@ -40,13 +40,14 @@ class HomeController extends QuintypeController
         $story = $this->client->storyBySlug(['slug' => $slug]);
         $relatedStories = $this->client->relatedStories($story['id']);
         $storiesToCache = array_merge([$story], $relatedStories);
-        $authorDetails = $this->client->getAuthor($story['author-id']);
 
         $sectionNames = '';
-        $getRatingValues = [];
+        $ratingValues = [];
+        $authorDetails = [];
         if($story['story-template'] == 'recipe'){
           $sectionNames = $this->getSectionNames($story);
-          $getRatingValues = $this->getAverageRating($story);
+          $ratingValues = $this->getAverageRating($story);
+          $authorDetails = $this->client->getAuthor($story['author-id']);
         }
         //Set SEO meta tags.
         $setSeo = $this->seo->story($page['type'], $story);
@@ -55,7 +56,7 @@ class HomeController extends QuintypeController
         return response(view('story/index', $this->toView([
         'story' => $story,
         'relatedStories' => $relatedStories,
-        'getRatingValues' => $getRatingValues,
+        'ratingValues' => $ratingValues,
         'sectionNames' => $sectionNames,
         'authorDetails' => $authorDetails,
         'page' => $page,

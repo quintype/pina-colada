@@ -56,9 +56,9 @@ class QuintypeController extends Controller
             }
             $averageRatingValue = round(($numerator) / ($noOfVoters), 1);
             $ratingPercentValue = ($averageRatingValue * 100) / (5);
-            $getRatingValues = array('average-rating' => $averageRatingValue, 'rating-percentage' => $ratingPercentValue, 'rater-count' => $noOfVoters);
+            $ratingValues = array('average-rating' => $averageRatingValue, 'rating-percentage' => $ratingPercentValue, 'rater-count' => $noOfVoters);
 
-            return $getRatingValues;
+            return $ratingValues;
         }
     }
 
