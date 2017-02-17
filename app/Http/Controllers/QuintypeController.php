@@ -11,7 +11,7 @@ class QuintypeController extends Controller
 {
     public function __construct()
     {
-        $this->client = new Api(config('quintype.api-host'));
+        $this->client = new Api(getQuintypeAPIHost(Request()->getHost()));
         $this->config = array_merge($this->client->config(), config('quintype'));
         $this->allStacks = $this->config['layout']['stacks'];
         $this->meta = new Meta();

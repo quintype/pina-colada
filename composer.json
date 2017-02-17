@@ -29,6 +29,7 @@
             "App\\": "app/"
         },
         "files": [
+            "resources/multiple_domains.php",
             "resources/helpers.php"
         ]
     },

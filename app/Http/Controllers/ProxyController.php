@@ -10,7 +10,7 @@ class ProxyController extends BaseController
 {
     public function __construct()
     {
-        $this->host = config("quintype.api-host");
+        $this->host = getQuintypeAPIHost(Request()->getHost());
     }
 
     function getRoute($request) {

@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        $client = new Api(config("quintype.api-host"));
+        $client = new Api(getQuintypeAPIHost(config("quintype.api-host")));
         if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             return response()->view('errors/404', ["config" => $client->config()], 404);
         }
