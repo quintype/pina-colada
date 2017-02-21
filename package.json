@@ -17,7 +17,7 @@
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.1",
-    "gulp-quintype": "^1.0.4",
+    "gulp-quintype": "^1.1.0",
     "twigify": "git://github.com/gja/twigify#allow-transforms"
   },
   "dependencies": {

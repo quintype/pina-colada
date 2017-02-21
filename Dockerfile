@@ -1,4 +1,4 @@
-FROM quintype/docker-base:php-nginx
+FROM quintype/docker-base:php-nginx-alpine
 
 MAINTAINER Quintype Developers <dev-core@quintype.com>
 
@@ -17,6 +17,6 @@ RUN composer install
 RUN npm install
 RUN ./node_modules/.bin/gulp --production
 
-RUN chown -R www-data.www-data /app
+RUN chown -R nginx:nginx /app
 
 CMD ["./docker/start-in-container.sh"]
