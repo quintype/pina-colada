@@ -50,12 +50,24 @@ Twig.extendFunction("getPhotoStoryImages", function(story) {
     return storyImages;
 });
 
-Twig.extendFunction("menuBase", function(menuType) {
-    if (menuType == 'section') {
-        return '/section/';
-    } else {
-        return '';
-    }
+Twig.extendFunction("prepareMenuUrl", function(menuType, menuSlug, parentHierarchy) {
+  switch(menuType){
+    case 'section':
+      if(parentHierarchy.length > 0){
+        return '/section/'+ parentHierarchy.join("/") + '/' + menuSlug;
+      }
+      return '/section/' + menuSlug;
+      break;
+    case 'link':
+      return menuSlug;
+      break;
+    case 'tag':
+      return '/tag?tag=' + menuSlug;
+      break;
+    default:
+      return '#';
+      break;
+  }
 });
 
 require("../../../resources/views/author/body.twig");

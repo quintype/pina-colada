@@ -1,20 +1,16 @@
 <ul>
     {% for level1menu in client.menuItems(nestedMenuItems) %}
-        {% set level1menuUrl = menuBase(level1menu.menuType()) ~ level1menu.url() %}
-        <li>
-            <a href="{{ level1menuUrl }}">{{ level1menu.title() }}</a>
-        </li>
-        <ul>
-            {% if level1menu['children'] %}
-                {% for level2menu in client.menuItems(level1menu['children']) %}
-                    {% set level2menuUrl = menuBase(level1menu.menuType()) ~ level1menu.url() ~ "/" ~ level2menu.url() %}
-                    <li>
-                        <a href="{{ level2menuUrl }}">{{ level2menu.title() }}</a>
-                    </li>
-                {% endfor %}
-            {% endif %}
-        </ul>
+        {% set level1menuSlug = level1menu.slug() %}
+        {% set level1menuUrl = prepareMenuUrl(level1menu.menuType(), level1menuSlug) %}
+        <li><a href="{{ level1menuUrl }}">{{ level1menu.title() }}</a></li>
+        {% if level1menu['children'] %}
+          <ul>
+              {% for level2menu in client.menuItems(level1menu['children']) %}
+                  {% set level2menuSlug = level2menu.slug() %}
+                  {% set level2menuUrl = prepareMenuUrl(level2menu.menuType(), level2menuSlug, [level1menuSlug]) %}
+                  <li><a href="{{ level2menuUrl }}">{{ level2menu.title() }}</a></li>
+              {% endfor %}
+          </ul>
+        {% endif %}
     {% endfor %}
 </ul>
-{% include "shared/login" %}
-{% include "shared/register" %}

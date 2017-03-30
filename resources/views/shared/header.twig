@@ -1,10 +1,7 @@
 <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
   <h3 itemprop="name" ><a href="/">Pina Colada</a></h3>
 </span>
-{% block search %}
-  {% include "shared/search_box" %}
-{% endblock %}
-
-{% block menu %}
-  {% include "shared/menu" %}
-{% endblock %}
+{% include "shared/search_box" %}
+{% include "shared/menu" %}
+{% include "shared/login" %}
+{% include "shared/register" %}

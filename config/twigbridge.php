@@ -182,7 +182,7 @@ return [
             'focusedImageUrl',
             'base64_decode',
             'getPhotoStoryImages',
-            'menuBase'
+            'prepareMenuUrl'
         ],
 
         /*
