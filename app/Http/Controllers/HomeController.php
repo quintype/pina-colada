@@ -150,8 +150,8 @@ class HomeController extends QuintypeController
         ];
         $pickedStories = array_slice($this->client->stories($params), 0, $storyCount);
 
-      //Set SEO meta tags.
-      $setSeo = $this->seo->tag($tag);
+        //Set SEO meta tags.
+        $setSeo = $this->seo->tag($tag);
         $this->meta->set($setSeo->prepareTags());
 
         if (sizeof($pickedStories) < 1) {
@@ -181,8 +181,8 @@ class HomeController extends QuintypeController
         ];
         $pickedStories = array_slice($this->client->search($params), 0, $storyCount);
 
-      //Set SEO meta tags.
-      $setSeo = $this->seo->search($searchKey);
+        //Set SEO meta tags.
+        $setSeo = $this->seo->search($searchKey);
         $this->meta->set($setSeo->prepareTags());
         if (sizeof($pickedStories) < 1) {
             return view('errors/no_results', $this->toView([]));
