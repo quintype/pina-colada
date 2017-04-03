@@ -3,35 +3,39 @@
     <ul class="home-page__stories">
       {% for story in stories %}
         <li class="home-page__story story">
-          <a class="story__link" href="{{story['slug']}}">
-            <img class="story__image" src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
-            <h2 class="story__title">{{story['headline']}}</h2>
-          </a>
+            <a class="story__link" href="{{story['slug']}}">
+              <img class="story__image" src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+            </a>
+            <h2 class="story__title">
+              <a class="story__link" href="{{story['slug']}}">{{story['headline']}}</a>
+            </h2>
         </li>
       {% endfor %}
     </ul>
 
-    <aside class="home-page__side-bar">
+    <div>
       {% for stack in stacks %}
-        <article class="side-bar__stack">
-          <h1 class="stack__title">{{ stack.heading }}</h1>
-          <ul>
-            {% for story in stack.stories %}
-            <li>
-              <a href="/{{ story['slug'] }}">
-                <h3 class="stack__heading">{{ story['headline'] }}</h3>
-                <p class="stack__summary">{{ story['summary'] }}</p>
-                <div class="stack__byline">
-                  <span class="stack__author-name">{{ story['author-name'] }}</span>
-                  {% set story_date =  story['last-published-at']//1000 %}
-                  <span class="stack__published-date">{{ story_date|date("F d, Y, g:i a","Asia/Calcutta") }}</span>
-                </div>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </article>
+        {% if stack.stories | length > 0 %}
+          <article class="side-bar__stack">
+            <h1 class="stack__title">{{ stack.heading }}</h1>
+            <ul>
+              {% for story in stack.stories %}
+              <li>
+                <a href="/{{ story['slug'] }}">
+                  <h3 class="stack__heading">{{ story['headline'] }}</h3>
+                  <p class="stack__summary">{{ story['summary'] }}</p>
+                  <div class="stack__byline">
+                    <span class="stack__author-name">{{ story['author-name'] }}</span>
+                    {% set story_date =  story['last-published-at']//1000 %}
+                    <span class="stack__published-date">{{ story_date|date("F d, Y, g:i a","Asia/Calcutta") }}</span>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </article>
+        {% endif %}
       {% endfor %}
-    </aside>
+    </div>
   </div>
 </div>
