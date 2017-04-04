@@ -39,3 +39,11 @@ Route::get('/author/{authorId}', 'HomeController@author');
 Route::get('/tag', 'HomeController@tag');
 
 Route::get('/search', 'HomeController@search');
+
+Route::get('/about-us', 'StaticController@aboutUs');
+
+Route::get('/contact-us', 'StaticController@contactUs');
+
+Route::get('/privacy-policy', 'StaticController@privacyPolicy');
+
+Route::get('/terms-of-use', 'StaticController@termsOfUse');
