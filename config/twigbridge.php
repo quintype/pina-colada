@@ -182,7 +182,8 @@ return [
             'focusedImageUrl',
             'base64_decode',
             'getPhotoStoryImages',
-            'prepareMenuUrl'
+            'prepareMenuUrl',
+            'dateIsoFormat'
         ],
 
         /*

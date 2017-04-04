@@ -70,6 +70,10 @@ Twig.extendFunction("prepareMenuUrl", function(menuType, menuSlug, parentHierarc
   }
 });
 
+Twig.extendFunction("dateIsoFormat", function(date) {
+   return new Date(date).toISOString();
+});
+
 require("../../../resources/views/author/body.twig");
 require("../../../resources/views/author/index.twig");
 

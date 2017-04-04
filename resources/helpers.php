@@ -61,3 +61,11 @@ function getPhotoStoryImages($story) {
    }
   return $photoArray;
 }
+
+function dateIsoFormat($data) {
+  return date(DATE_ISO8601, $data);
+}
+
+function base64_decode($data) {
+  return base64_decode($data);
+}

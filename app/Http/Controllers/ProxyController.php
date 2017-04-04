@@ -26,16 +26,28 @@ class ProxyController extends BaseController
     public function proxyGet(Request $request)
     {
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', $this->getRoute($request));
-        return response($res->getBody(), $res->getStatusCode())->withHeaders($res->getHeaders());
+        $request_headers = [];
+        if (isset($_COOKIE['session-cookie']) && $_COOKIE['session-cookie'] != '') {
+            $request_headers = ['X-QT-AUTH' => $_COOKIE['session-cookie']];
+        }
+        $res = $client->request('GET', $this->getRoute($request), ['headers' => $request_headers]);
+        $headers = $res->getHeaders();
+        unset($headers['Transfer-Encoding']);
+
+        return response($res->getBody(), $res->getStatusCode())->withHeaders($headers);
     }
 
     public function proxyPost(Request $request, Response $response)
     {
-      $client = new \GuzzleHttp\Client();
-      $res = $client->request('POST', $this->getRoute($request), ['body' => $request->getContent()]);
-      $headers = $res->getHeaders();
-      unset($headers['Transfer-Encoding']);
-      return response($res->getBody(), $res->getStatusCode())->withHeaders($headers);
+        $client = new \GuzzleHttp\Client();
+        $request_headers = [];
+        if (isset($_COOKIE['session-cookie']) && $_COOKIE['session-cookie'] != '') {
+            $request_headers = ['X-QT-AUTH' => $_COOKIE['session-cookie']];
+        }
+        $res = $client->request('POST', $this->getRoute($request), ['body' => $request->getContent(), 'headers' => $request_headers]);
+        $headers = $res->getHeaders();
+        unset($headers['Transfer-Encoding']);
+
+        return response($res->getBody(), $res->getStatusCode())->withHeaders($headers);
     }
 }
