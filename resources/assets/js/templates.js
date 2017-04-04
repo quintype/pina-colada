@@ -27,7 +27,7 @@ Twig.extend(function(Twig) {
     }
 });
 
-Twig.extendFunction("base64_decode", function(string) {
+Twig.extendFunction("decode64", function(string) {
     return atob(string);
 });
 

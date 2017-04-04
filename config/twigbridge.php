@@ -180,7 +180,7 @@ return [
             'last',
             'assetPath',
             'focusedImageUrl',
-            'base64_decode',
+            'decode64',
             'getPhotoStoryImages',
             'prepareMenuUrl',
             'dateIsoFormat'
