@@ -10,6 +10,14 @@
         "twigify",
         {
           "transform": "transformTemplates"
+        },
+        "babelify",
+        {
+          "plugins": [],
+          "presets": [
+            "es2015",
+            "react"
+          ]
         }
       ]
     ]
