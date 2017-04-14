@@ -1,12 +1,9 @@
 @import "colors";
-
 @import "layout";
 @import "menu";
 @import "stories-list";
-@import "slick/slick-theme";
-@import "slick/slick";
-
+@import "vendor/slick/slick-theme";
+@import "vendor/slick/slick";
 @import "story/elements/elements_subtypes/gallery";
 @import "story/elements/elements_subtypes/slideshow";
-
 @import "story/templates/recipe.scss";
