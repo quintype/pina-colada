@@ -1,56 +1,59 @@
 body {
-    background-color: $light-gray;
-    margin: 0;
+  background-color: $light-gray;
+  margin: 0;
 }
 
 figure {
-    position: relative;
-    margin: 0;
-    padding-top: 56.25%;
-    overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding-top: 56.25%;
+  overflow: hidden;
 
-    >img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
+  > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }
 
 .body-container {
-    background-color: white;
-    margin: auto;
-    max-width: 1024px;
+  background-color: white;
+  margin: auto;
+  max-width: 1024px;
 
-    @media (min-width: 768px) {
-	padding: 10px;
-	border-radius: 10px;
-    }
+  @media (min-width: 768px) {
+    padding: 10px;
+    border-radius: 10px;
+  }
 }
 
 .layout-menu {
-    float: left;
-    min-width: 128px;
-    display: none;
+  float: left;
+  min-width: 128px;
+  display: none;
 
-    @media (min-width: 768px) {
-	display: block;
-    }
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
 .layout-content {
-    float: left;
-    width: 100%;
+  float: left;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
-    .layout-menu {
-	display: block;
-	width: 20%;
-    }
-    .layout-content { width: 80%; }
+  .layout-menu {
+    display: block;
+    width: 20%;
+  }
+
+  .layout-content {
+    width: 80%;
+  }
 }
 
 .clear {
-    clear: both;
+  clear: both;
 }

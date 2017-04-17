@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "lint-css": "stylelint './resources/assets/**/*.scss'; exit 0",
+    "fix-css": "stylefmt -r ./resources/assets/**/*.scss"
   },
   "browserify": {
     "transform": [
@@ -26,6 +28,9 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-quintype": "^1.1.0",
+    "stylefmt": "^5.3.2",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0",
     "twigify": "git://github.com/gja/twigify#allow-transforms"
   },
   "dependencies": {
