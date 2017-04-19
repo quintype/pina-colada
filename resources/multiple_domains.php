@@ -1,6 +1,8 @@
 <?php
 
-function getQuintypeAPIHost($currentHost) {
+function getQuintypeAPIHost($request) {
+    $currentHost = $request->getHost();
+
     if(config("quintype.api-host-remove-web") && strpos($currentHost, '-web.') !== false) {
         return "https://" . str_replace("-web", "", $currentHost);
     }
