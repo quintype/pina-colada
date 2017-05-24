@@ -50,7 +50,7 @@ class FocusedImage {
 
         $args = [];
         foreach($opts as $key => $value) {
-            array_push($args, $key . "=" . (is_array($value) ? join(",", $value) : $value ));
+            array_push($args, $key . "=" . rawurlencode(is_array($value) ? join(",", $value) : $value ));
         }
 
         return "?" . join("&", $args);

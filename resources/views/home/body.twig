@@ -4,7 +4,7 @@
       {% for story in stories %}
         <li class="home-page__story story">
             <a class="story__link" href="{{story['slug']}}">
-              <img class="story__image" src="{{focusedImageUrl(story['hero-image-s3-key'], [16,9], story['hero-image-metadata'], {w: 640})}}"/>
+              {% include 'shared/focused_image' with { slug: story['hero-image-s3-key'], metadata: story['hero-image-metadata'], aspectRatio: [16,9], imgixParams: {auto: "format,compress"}, defualtWidth: 1280, widths: [377, 754, 1280]} %}
             </a>
             <h2 class="story__title">
               <a class="story__link" href="{{story['slug']}}">{{story['headline']}}</a>
