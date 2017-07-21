@@ -9,6 +9,11 @@ git clone https://github.com/quintype/pina-colada.git
 cd pina-colada
 ```
 * Install all external libraries
+* To install composer, run the following commands in the terminal:
+```shell
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```
 ```shell
 composer install # Install PHP Libraries
 To install composer use command :- curl -sS https://getcomposer.org/installer | php
